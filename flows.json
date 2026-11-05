@@ -84,6 +84,14 @@
         "info": "Persistencia local del estado en el archivo b09_persist.json (sin InfluxDB)."
     },
     {
+        "id": "ede5dfb2ef3aee7c",
+        "type": "tab",
+        "label": "Flujo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "1d6deefcd60c8813",
         "type": "ui-theme",
         "name": "Default Theme",
@@ -2427,6 +2435,78 @@
         "wires": [
             [
                 "31c3f0850a3a2a19"
+            ]
+        ]
+    },
+    {
+        "id": "d4fb371da5c9e96d",
+        "type": "inject",
+        "z": "ede5dfb2ef3aee7c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"texto\":\"Hola UPSE\"}",
+        "payloadType": "jsonata",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "1cbb39f7f0ace463"
+            ]
+        ]
+    },
+    {
+        "id": "fbeb592ab7c1c11c",
+        "type": "debug",
+        "z": "ede5dfb2ef3aee7c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1cbb39f7f0ace463",
+        "type": "change",
+        "z": "ede5dfb2ef3aee7c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.texto",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 160,
+        "wires": [
+            [
+                "fbeb592ab7c1c11c"
             ]
         ]
     }
