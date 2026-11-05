@@ -1,0 +1,2433 @@
+[
+    {
+        "id": "c54d4e49355f28eb",
+        "type": "tab",
+        "label": "Cliente",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "srv_tab",
+        "type": "tab",
+        "label": "Servidor Examen - Juan",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "api_tab_srv",
+        "type": "tab",
+        "label": "Servidor",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "api_tab_cli",
+        "type": "tab",
+        "label": "Cliente",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b09tab1",
+        "type": "tab",
+        "label": "B09 Simulación",
+        "disabled": false,
+        "info": "Modelo dinámico (1 Hz). Estado en contexto flow file-backed."
+    },
+    {
+        "id": "b09tab2",
+        "type": "tab",
+        "label": "B09 API REST",
+        "disabled": false,
+        "info": "Comunicaciones HTTP: http in / http response."
+    },
+    {
+        "id": "b09tab3",
+        "type": "tab",
+        "label": "B09 Control",
+        "disabled": false,
+        "info": "Validación y ejecución de comandos y consignas."
+    },
+    {
+        "id": "2fd21565f8570ecd",
+        "type": "tab",
+        "label": "B09 · 1 Simulación",
+        "disabled": false,
+        "info": "Modelo físico del tanque TK-101: balance de volumen, dosificación con retardo, pH y turbidez."
+    },
+    {
+        "id": "9e8ddab1ecb72cea",
+        "type": "tab",
+        "label": "B09 · 2 Control y alarmas",
+        "disabled": false,
+        "info": "Enclavamientos automáticos, evaluación de alarmas e histórico."
+    },
+    {
+        "id": "1835dc825e564edc",
+        "type": "tab",
+        "label": "B09 · 3 Comunicaciones (API REST)",
+        "disabled": false,
+        "info": "Endpoints HTTP In/Response bajo /api/B09/."
+    },
+    {
+        "id": "3db0a3808e0a91d1",
+        "type": "tab",
+        "label": "B09 · 4 Presentación",
+        "disabled": false,
+        "info": "Sirve el dashboard HTML/JS en GET /B09. El dashboard solo usa fetch() contra la API."
+    },
+    {
+        "id": "285f9af340bec452",
+        "type": "tab",
+        "label": "B09 · 5 Datos (persistencia)",
+        "disabled": false,
+        "info": "Persistencia local del estado en el archivo b09_persist.json (sin InfluxDB)."
+    },
+    {
+        "id": "1d6deefcd60c8813",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#fcfcfd",
+            "primary": "#0d74ce",
+            "bgPage": "#f9f9fb",
+            "groupBg": "#ffffff",
+            "groupOutline": "#d9d9e0"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "bbb996d0a69e1145",
+        "type": "ui-theme",
+        "name": "Tema Clase 5",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "ui_theme_c5",
+        "type": "ui-theme",
+        "name": "Tema Clase 5",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "mqtt_broker_local",
+        "type": "mqtt-broker",
+        "name": "Bróker Local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "fa15135c9974c34a",
+        "type": "mqtt-broker",
+        "name": "hive",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "feb2838ff08bbaac",
+        "type": "mqtt-broker",
+        "name": "mosq",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "bc3035ab661e70bc",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#fcfcfd",
+            "primary": "#0d74ce",
+            "bgPage": "#f9f9fb",
+            "groupBg": "#ffffff",
+            "groupOutline": "#d9d9e0"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "broker_s",
+        "type": "mqtt-broker",
+        "name": "Broker Sensor",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "broker_d",
+        "type": "mqtt-broker",
+        "name": "Broker Dashboard",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ui_theme1",
+        "type": "ui-theme",
+        "name": "Tema",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "ui_tab_c5",
+        "type": "ui_tab",
+        "name": "Monitoreo",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "dash_tab_riego",
+        "type": "ui_tab",
+        "name": "Monitoreo Invernadero 1",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "ui_grp_ctrl",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "ui_tab_c5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_grp_line",
+        "type": "ui_group",
+        "name": "Chart 1 - Linea",
+        "tab": "ui_tab_c5",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_grp_bar",
+        "type": "ui_group",
+        "name": "Chart 2 - Barras",
+        "tab": "ui_tab_c5",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_grp_pie",
+        "type": "ui_group",
+        "name": "Chart 3 - Torta",
+        "tab": "ui_tab_c5",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ui_grp_gauge",
+        "type": "ui_group",
+        "name": "Estado actual",
+        "tab": "ui_tab_c5",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dash_group_sensores",
+        "type": "ui_group",
+        "name": "Lectura de Sensores",
+        "tab": "dash_tab_riego",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dash_group_estado",
+        "type": "ui_group",
+        "name": "Estado del Sistema",
+        "tab": "dash_tab_riego",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e944854f18742e28",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "13ec35ecfd822ef2",
+        "type": "ui-base",
+        "name": "UI Name",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "api_theme",
+        "type": "ui-theme",
+        "name": "Tema API",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "6b9f0ded6580ca2c",
+        "type": "ui-page",
+        "name": "Page Name",
+        "ui": "13ec35ecfd822ef2",
+        "path": "/p",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "default",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "tabs": [],
+        "order": 1,
+        "className": "",
+        "visible": "false",
+        "disabled": "false"
+    },
+    {
+        "id": "1926036a2c6df1d7",
+        "type": "ui-button",
+        "z": "c54d4e49355f28eb",
+        "group": "",
+        "name": "",
+        "label": "Consultar temperatura",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "db5d565c3220bae1"
+            ]
+        ]
+    },
+    {
+        "id": "db5d565c3220bae1",
+        "type": "http request",
+        "z": "c54d4e49355f28eb",
+        "name": "GET temperatura",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/API/6toB/juan?dato=temperatura",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "76ae47d13e04dde0",
+                "dcb1253f6c80e548"
+            ]
+        ]
+    },
+    {
+        "id": "76ae47d13e04dde0",
+        "type": "debug",
+        "z": "c54d4e49355f28eb",
+        "name": "debug1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "dcb1253f6c80e548",
+        "type": "ui-text",
+        "z": "c54d4e49355f28eb",
+        "group": "",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Temperatura:",
+        "format": "{{msg.payload.temperatura}} °C",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "jsonata",
+        "x": 650,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "0fef0d5244cc554b",
+        "type": "ui-button",
+        "z": "c54d4e49355f28eb",
+        "group": "",
+        "name": "",
+        "label": "Consultar ciudad y país",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "a79426aecf6d2944"
+            ]
+        ]
+    },
+    {
+        "id": "a79426aecf6d2944",
+        "type": "http request",
+        "z": "c54d4e49355f28eb",
+        "name": "GET ubicacion",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/API/6toB/juan?dato=ubicacion",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "0507f0baad58de45",
+                "7e2503542703bcff"
+            ]
+        ]
+    },
+    {
+        "id": "0507f0baad58de45",
+        "type": "debug",
+        "z": "c54d4e49355f28eb",
+        "name": "debug2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7e2503542703bcff",
+        "type": "ui-text",
+        "z": "c54d4e49355f28eb",
+        "group": "",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Ubicación:",
+        "format": "{{msg.payload.ciudad}}, {{msg.payload.pais}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "jsonata",
+        "x": 650,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "srv_in",
+        "type": "http in",
+        "z": "srv_tab",
+        "name": "GET /API/6toB/juan",
+        "url": "/API/6toB/juan",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "srv_sw",
+                "srv_dbg_in"
+            ]
+        ]
+    },
+    {
+        "id": "srv_dbg_in",
+        "type": "debug",
+        "z": "srv_tab",
+        "name": "Peticion recibida",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req.query",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "srv_sw",
+        "type": "switch",
+        "z": "srv_tab",
+        "name": "dato",
+        "property": "req.query.dato",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "temperatura",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ubicacion",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "srv_rand"
+            ],
+            [
+                "srv_chg2"
+            ],
+            [
+                "srv_chg3"
+            ]
+        ]
+    },
+    {
+        "id": "srv_rand",
+        "type": "random",
+        "z": "srv_tab",
+        "name": "",
+        "low": "18",
+        "high": "35",
+        "inte": "false",
+        "property": "payload",
+        "x": 590,
+        "y": 100,
+        "wires": [
+            [
+                "srv_chg1"
+            ]
+        ]
+    },
+    {
+        "id": "srv_chg1",
+        "type": "change",
+        "z": "srv_tab",
+        "name": "set msg.payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"temperatura\": $round(payload, 1), \"unidad\": \"°C\"}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 100,
+        "wires": [
+            [
+                "srv_out",
+                "srv_dbg_out"
+            ]
+        ]
+    },
+    {
+        "id": "srv_chg2",
+        "type": "change",
+        "z": "srv_tab",
+        "name": "set msg.payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"ciudad\":\"Machala\",\"pais\":\"Ecuador\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 180,
+        "wires": [
+            [
+                "srv_out",
+                "srv_dbg_out"
+            ]
+        ]
+    },
+    {
+        "id": "srv_chg3",
+        "type": "change",
+        "z": "srv_tab",
+        "name": "error 400",
+        "rules": [
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "400",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"error\":\"Use ?dato=temperatura o ?dato=ubicacion\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 260,
+        "wires": [
+            [
+                "srv_out"
+            ]
+        ]
+    },
+    {
+        "id": "srv_out",
+        "type": "http response",
+        "z": "srv_tab",
+        "name": "OK",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "srv_dbg_out",
+        "type": "debug",
+        "z": "srv_tab",
+        "name": "Respuesta enviada",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "api_in1",
+        "type": "http in",
+        "z": "api_tab_srv",
+        "name": "GET temperatura",
+        "url": "/API/6toB/juan/temperatura",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 80,
+        "y": 100,
+        "wires": [
+            [
+                "b54f95cc06cc15d0"
+            ]
+        ]
+    },
+    {
+        "id": "api_res1",
+        "type": "http response",
+        "z": "api_tab_srv",
+        "name": "Responde temperatura",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "api_sdbg1",
+        "type": "debug",
+        "z": "api_tab_srv",
+        "name": "Debug  temperatura",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "api_in2",
+        "type": "http in",
+        "z": "api_tab_srv",
+        "name": " GET ubicación",
+        "url": "/API/6toB/juan/ubicacion",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "api_chg2"
+            ]
+        ]
+    },
+    {
+        "id": "api_chg2",
+        "type": "change",
+        "z": "api_tab_srv",
+        "name": "Define ciudad y país",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"ciudad\":\"Machala\",\"pais\":\"Ecuador\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "api_res2",
+                "api_sdbg2"
+            ]
+        ]
+    },
+    {
+        "id": "api_res2",
+        "type": "http response",
+        "z": "api_tab_srv",
+        "name": "Responde ubicación",
+        "statusCode": "200",
+        "headers": {},
+        "x": 670,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "api_sdbg2",
+        "type": "debug",
+        "z": "api_tab_srv",
+        "name": "Debug ubicación",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "90efeddf4f33d5e6",
+        "type": "change",
+        "z": "api_tab_srv",
+        "name": "Temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"temperatura\": $round(payload, 1), \"unidad\": \"°C\"}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "api_res1",
+                "api_sdbg1"
+            ]
+        ]
+    },
+    {
+        "id": "b54f95cc06cc15d0",
+        "type": "random",
+        "z": "api_tab_srv",
+        "name": "",
+        "low": 1,
+        "high": "50",
+        "inte": "true",
+        "property": "payload",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "90efeddf4f33d5e6"
+            ]
+        ]
+    },
+    {
+        "id": "api_c_c1",
+        "type": "comment",
+        "z": "api_tab_cli",
+        "name": "",
+        "info": "Botón 1 pide la temperatura y se muestra\nen debug",
+        "x": 130,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "api_btn1",
+        "type": "ui-button",
+        "z": "api_tab_cli",
+        "group": "",
+        "name": "Botón temperatura",
+        "label": "Pedir temperatura",
+        "order": 1,
+        "width": "6",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "api_req1"
+            ]
+        ]
+    },
+    {
+        "id": "api_req1",
+        "type": "http request",
+        "z": "api_tab_cli",
+        "name": "GET temperatura",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:1880/API/6toB/juan/temperatura",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "api_dbg1"
+            ]
+        ]
+    },
+    {
+        "id": "api_dbg1",
+        "type": "debug",
+        "z": "api_tab_cli",
+        "name": "debug1 - temperatura",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "api_c_c2",
+        "type": "comment",
+        "z": "api_tab_cli",
+        "name": "",
+        "info": "Este botón pide la ubicación y la muestra",
+        "x": 120,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "api_btn2",
+        "type": "ui-button",
+        "z": "api_tab_cli",
+        "group": "",
+        "name": "Botón ubicación",
+        "label": "Pedir ciudad y país",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "api_req2"
+            ]
+        ]
+    },
+    {
+        "id": "api_req2",
+        "type": "http request",
+        "z": "api_tab_cli",
+        "name": "GET ubicación",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:1880/API/6toB/juan/ubicacion",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "api_dbg2"
+            ]
+        ]
+    },
+    {
+        "id": "api_dbg2",
+        "type": "debug",
+        "z": "api_tab_cli",
+        "name": "debug2 - ubicación",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b09n001",
+        "type": "inject",
+        "z": "b09tab1",
+        "name": "tick 1 s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "b09n002"
+            ]
+        ]
+    },
+    {
+        "id": "b09n002",
+        "type": "function",
+        "z": "b09tab1",
+        "name": "Simulador planta B09",
+        "func": "const gs=k=>{try{return flow.get(k,'file')}catch(e){return flow.get(k)}};\nconst ss=(k,v)=>{try{flow.set(k,v,'file')}catch(e){flow.set(k,v)}};\nconst INIT=()=>({t0:new Date().toISOString(),ts:new Date().toISOString(),last:Date.now(),tsim:0,level:1500,ph:7.4,turb:9,dset:30,deff:30,qset:40,pump:false,fault:false,discharge:false,forced:false,speed:10,turbidEvent:false,phin:7.4,tin:12,qin:0,qout:0,overflow:false,volT:0,tSpec:0,tUp:0,reag:0,overVol:0,aid:0,cid:0,mph:7.4,mturb:9});\nconst SPEC=s=>s.level>=100&&s.ph>=6.5&&s.ph<=8.5&&s.turb<5;\n\nlet s=gs('sim');if(!s)s=INIT();\nconst now=Date.now(),dm=Math.min((now-s.last)/1000,5)*s.speed/60;s.last=now; // minutos simulados\ns.qin=(s.pump&&!s.fault)?s.qset:0;\ns.qout=(s.discharge&&s.level>0)?60:0;\nconst V=Math.max(s.level,300);\ns.deff+=(s.dset-s.deff)*(1-Math.exp(-dm/2));            // retardo de reacción tau=2 min\nconst de=s.level>=100?s.deff:0;\ns.ph+=(s.qin/V*(s.phin-s.ph)-0.0002*de*3000/V)*dm;      // mezcla con afluente + efecto del reactivo (ácido)\ns.turb+=(s.qin/V*((s.turbidEvent?80:s.tin)-s.turb)-(0.005+0.002*de)*s.turb)*dm; // mezcla + sedimentación/coagulación\ns.turb=Math.max(0.2,s.turb);s.ph=Math.min(14,Math.max(0,s.ph));\nconst spec=SPEC(s);\ns.level+=(s.qin-s.qout)*dm;                               // balance de volumen\ns.overflow=false;\nif(s.level>=3000){if(s.qin>s.qout){s.overflow=true;s.overVol+=s.level-3000;}s.level=3000;}\nif(s.level<=0){s.level=0;s.discharge=false;}\nif(s.discharge&&!s.forced&&!spec)s.discharge=false;      // protección: no descargar fuera de especificación\ns.tsim+=dm;if(spec)s.tSpec+=dm;if(!s.fault)s.tUp+=dm;\nif(s.discharge&&spec)s.volT+=s.qout*dm;\nif(s.level>=100)s.reag+=s.dset*dm;\nconst n=k=>(Math.random()+Math.random()+Math.random()-1.5)*k;  // ruido de sensor\ns.mph=+(s.ph+n(0.01)).toFixed(2);s.mturb=+Math.max(0,s.turb+n(0.1)).toFixed(2);\ns.ts=new Date().toISOString();\nconst A=gs('alarms')||[];\nconst conds=[['PH_FUERA_RANGO','critica','pH fuera de 6,5-8,5',s.ph<6.5||s.ph>8.5,s.mph],\n['TURBIDEZ_ELEVADA','media','Turbidez > 10 NTU',s.turb>10,s.mturb],\n['TANQUE_DESBORDADO','critica','Tanque desbordado (3000 L)',s.overflow,+s.level.toFixed(0)]];\nfor(const [cod,sev,desc,on,val] of conds){const a=A.find(x=>x.codigo===cod&&!x.hora_normalizacion);\n if(on&&!a)A.push({id:++s.aid,codigo:cod,severidad:sev,descripcion:desc,valor:val,hora_activacion:s.ts,hora_normalizacion:null,reconocida:false,hora_reconocimiento:null});\n else if(!on&&a)a.hora_normalizacion=s.ts;}\nwhile(A.length>200)A.shift();\nconst H=gs('hist')||[];\nH.push({ts:s.ts,nivel_L:+s.level.toFixed(1),caudal_Lmin:s.qin,ph:s.mph,turbidez_NTU:s.mturb,dosificacion_ml_min:s.dset});\nif(H.length>3600)H.shift();\nss('hist',H);ss('alarms',A);ss('sim',s);return null;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b09n003",
+        "type": "change",
+        "z": "b09tab2",
+        "name": "t0 solicitud",
+        "rules": [
+            {
+                "t": "set",
+                "p": "t0",
+                "pt": "msg",
+                "to": "$millis()",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 200,
+        "wires": [
+            [
+                "b09n004"
+            ]
+        ]
+    },
+    {
+        "id": "b09n004",
+        "type": "switch",
+        "z": "b09tab2",
+        "name": "GET / control",
+        "property": "req.method",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "GET",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 200,
+        "wires": [
+            [
+                "b09n005"
+            ]
+        ]
+    },
+    {
+        "id": "b09n005",
+        "type": "function",
+        "z": "b09tab2",
+        "name": "Lecturas GET",
+        "func": "const gs=k=>{try{return flow.get(k,'file')}catch(e){return flow.get(k)}};\nconst ss=(k,v)=>{try{flow.set(k,v,'file')}catch(e){flow.set(k,v)}};\nconst INIT=()=>({t0:new Date().toISOString(),ts:new Date().toISOString(),last:Date.now(),tsim:0,level:1500,ph:7.4,turb:9,dset:30,deff:30,qset:40,pump:false,fault:false,discharge:false,forced:false,speed:10,turbidEvent:false,phin:7.4,tin:12,qin:0,qout:0,overflow:false,volT:0,tSpec:0,tUp:0,reag:0,overVol:0,aid:0,cid:0,mph:7.4,mturb:9});\nconst SPEC=s=>s.level>=100&&s.ph>=6.5&&s.ph<=8.5&&s.turb<5;\n\nconst s=gs('sim');\nconst r=(c,o)=>{msg.statusCode=c;msg.payload=o;return msg;};\nconst err=(c,e,d)=>r(c,{error:e,detalle:d||null});\nif(!s)return err(503,'simulador no inicializado');\nconst p=msg.req.path,q=msg.req.query||{},spec=SPEC(s),base={dispositivo:'B09',ts:s.ts};\nswitch(p){\ncase '/api/B09/telemetry':return r(200,{...base,unidades:{nivel:'L',caudal:'L/min',ph:'pH',turbidez:'NTU',dosificacion:'mL/min'},nivel:+s.level.toFixed(1),caudal:s.qin,ph:s.mph,turbidez:s.mturb,caudal_descarga:s.qout,dosificacion:s.dset,bomba_entrada:s.pump&&!s.fault,falla_bomba:s.fault,descarga:s.discharge,desborde:s.overflow,agua_turbia_entrante:s.turbidEvent,velocidad:s.speed});\ncase '/api/B09/status':{const al=gs('alarms')||[];\n return r(200,{...base,estado:s.fault?'FALLA_BOMBA':s.overflow?'DESBORDE':s.discharge?'DESCARGA':s.pump?'TRATANDO':'EN_ESPERA',en_especificacion:spec,alarmas_activas:al.filter(a=>!a.hora_normalizacion).length,alarmas_sin_reconocer:al.filter(a=>!a.reconocida).length,setpoints:{caudal_entrada_lpm:s.qset,dosificacion_ml_min:s.dset,velocidad:s.speed},inicio:s.t0});}\ncase '/api/B09/kpis':{const t=Math.max(s.tsim,1e-9);\n return r(200,{...base,kpis:[\n {id:'volumen_tratado',valor:+(s.volT/1000).toFixed(3),unidad:'m³',formula:'Σ Q_descarga·Δt con pH∈[6,5;8,5] y turbidez<5 NTU, ÷1000'},\n {id:'tiempo_en_especificacion',valor:+(100*s.tSpec/t).toFixed(1),unidad:'%',formula:'100·t_espec / t_proceso'},\n {id:'consumo_reactivo',valor:+(s.reag/1000).toFixed(3),unidad:'L',formula:'Σ dosificación(mL/min)·Δt ÷ 1000'},\n {id:'tiempo_proceso',valor:+s.tsim.toFixed(1),unidad:'min',formula:'Σ Δt simulado = tiempo real × velocidad'},\n {id:'disponibilidad',valor:+(100*s.tUp/t).toFixed(1),unidad:'%',formula:'100·t_sin_falla_bomba / t_proceso'}]});}\ncase '/api/B09/history':{\n const min=q.minutos===undefined?15:Number(q.minutos);\n if(!(min>=1&&min<=60))return err(400,'minutos debe estar entre 1 y 60');\n const VS=['nivel_L','caudal_Lmin','ph','turbidez_NTU','dosificacion_ml_min'];\n const vs=q.variables?String(q.variables).split(','):VS;\n if(vs.some(v=>!VS.includes(v)))return err(400,'variable desconocida',VS);\n const t0=Date.now()-min*60000;\n let H=(gs('hist')||[]).filter(h=>Date.parse(h.ts)>=t0);\n const st=Math.ceil(H.length/600);H=H.filter((h,i)=>i%st===0).map(h=>{const o={ts:h.ts};vs.forEach(v=>o[v]=h[v]);return o;});\n return r(200,{...base,ventana_min:min,variables:vs,muestras:H});}\ncase '/api/B09/alarms':return r(200,{...base,alarmas:(gs('alarms')||[]).slice().reverse().slice(0,50)});\ncase '/api/B09/commandlog':return r(200,{...base,registro:(gs('clog')||[]).slice().reverse().slice(0,50)});\n}\nreturn err(404,'ruta no encontrada');\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 160,
+        "wires": [
+            [
+                "b09n006"
+            ]
+        ]
+    },
+    {
+        "id": "b09n006",
+        "type": "function",
+        "z": "b09tab2",
+        "name": "Registro y cabeceras",
+        "func": "const gs=k=>{try{return flow.get(k,'file')}catch(e){return flow.get(k)}};\nconst ss=(k,v)=>{try{flow.set(k,v,'file')}catch(e){flow.set(k,v)}};\nconst INIT=()=>({t0:new Date().toISOString(),ts:new Date().toISOString(),last:Date.now(),tsim:0,level:1500,ph:7.4,turb:9,dset:30,deff:30,qset:40,pump:false,fault:false,discharge:false,forced:false,speed:10,turbidEvent:false,phin:7.4,tin:12,qin:0,qout:0,overflow:false,volT:0,tSpec:0,tUp:0,reag:0,overVol:0,aid:0,cid:0,mph:7.4,mturb:9});\nconst SPEC=s=>s.level>=100&&s.ph>=6.5&&s.ph<=8.5&&s.turb<5;\n\nconst ms=Date.now()-msg.t0;\nmsg.headers={'Content-Type':'application/json','Access-Control-Allow-Origin':'*','X-Response-Time-ms':String(ms)};\nif(msg.payload&&typeof msg.payload==='object')msg.payload.tiempo_respuesta_ms=ms;\nif(msg.control){const l=gs('clog')||[];\n l.push({ts:new Date().toISOString(),metodo:msg.req.method,ruta:msg.req.path,comando:(msg.req.body||{}).comando||null,codigo:msg.statusCode,ms});\n while(l.length>200)l.shift();ss('clog',l);}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 260,
+        "wires": [
+            [
+                "b09n007"
+            ]
+        ]
+    },
+    {
+        "id": "b09n007",
+        "type": "http response",
+        "z": "b09tab2",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1160,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b09n008",
+        "type": "link out",
+        "z": "b09tab2",
+        "name": "→ control",
+        "mode": "link",
+        "links": [
+            "b09n010"
+        ],
+        "x": 760,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b09n009",
+        "type": "link in",
+        "z": "b09tab2",
+        "name": "← respuesta control",
+        "links": [
+            "b09n012"
+        ],
+        "x": 860,
+        "y": 320,
+        "wires": [
+            [
+                "b09n006"
+            ]
+        ]
+    },
+    {
+        "id": "b09n013",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "GET /telemetry",
+        "url": "/api/B09/telemetry",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n014",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "GET /status",
+        "url": "/api/B09/status",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 105,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n015",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "GET /kpis",
+        "url": "/api/B09/kpis",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 150,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n016",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "GET /history",
+        "url": "/api/B09/history",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 195,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n017",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "GET /alarms",
+        "url": "/api/B09/alarms",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n018",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "GET /commandlog",
+        "url": "/api/B09/commandlog",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 285,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n019",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "POST /commands",
+        "url": "/api/B09/commands",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 330,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n020",
+        "type": "http in",
+        "z": "b09tab2",
+        "name": "PUT /setpoint",
+        "url": "/api/B09/setpoint",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 375,
+        "wires": [
+            [
+                "b09n003"
+            ]
+        ]
+    },
+    {
+        "id": "b09n010",
+        "type": "link in",
+        "z": "b09tab3",
+        "name": "← comandos",
+        "links": [
+            "b09n008"
+        ],
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "b09n011"
+            ]
+        ]
+    },
+    {
+        "id": "b09n011",
+        "type": "function",
+        "z": "b09tab3",
+        "name": "Lógica de control",
+        "func": "const gs=k=>{try{return flow.get(k,'file')}catch(e){return flow.get(k)}};\nconst ss=(k,v)=>{try{flow.set(k,v,'file')}catch(e){flow.set(k,v)}};\nconst INIT=()=>({t0:new Date().toISOString(),ts:new Date().toISOString(),last:Date.now(),tsim:0,level:1500,ph:7.4,turb:9,dset:30,deff:30,qset:40,pump:false,fault:false,discharge:false,forced:false,speed:10,turbidEvent:false,phin:7.4,tin:12,qin:0,qout:0,overflow:false,volT:0,tSpec:0,tUp:0,reag:0,overVol:0,aid:0,cid:0,mph:7.4,mturb:9});\nconst SPEC=s=>s.level>=100&&s.ph>=6.5&&s.ph<=8.5&&s.turb<5;\n\nconst m=msg.req.method,p=msg.req.path,b=(msg.req.body&&typeof msg.req.body==='object')?msg.req.body:{};\nmsg.control=true;\nconst r=(c,o)=>{msg.statusCode=c;msg.payload=o;return msg;};\nconst err=(c,e,d)=>r(c,{error:e,detalle:d||null});\nlet s=gs('sim');if(!s)return err(503,'simulador no inicializado');\nconst num=(v,a,z)=>typeof v==='number'&&isFinite(v)&&v>=a&&v<=z;\nconst E409='comando incompatible con el estado';\nconst done=(c,cmd)=>{s.cid++;ss('sim',s);return r(c,{dispositivo:'B09',ts:new Date().toISOString(),aceptado:true,comando:cmd,id_comando:s.cid});};\nconst setDose=v=>{if(!num(v,0,200))return err(400,'dosificacion fuera de rango [0,200] mL/min');\n if(v>0&&s.level<100)return err(409,E409,'nivel < 100 L: no se puede dosificar');s.dset=v;return null;};\nif(m==='PUT'&&p==='/api/B09/setpoint'){\n const ks=Object.keys(b),ok=['caudal_entrada_lpm','dosificacion_ml_min','velocidad'];\n if(!ks.length||ks.some(k=>!ok.includes(k)))return err(400,'cuerpo inválido; campos permitidos',ok);\n if('caudal_entrada_lpm' in b&&!num(b.caudal_entrada_lpm,0,100))return err(400,'caudal_entrada_lpm fuera de rango [0,100]');\n if('velocidad' in b&&!num(b.velocidad,1,60))return err(400,'velocidad fuera de rango [1,60]');\n if('dosificacion_ml_min' in b){const e=setDose(b.dosificacion_ml_min);if(e)return e;}\n if('caudal_entrada_lpm' in b)s.qset=b.caudal_entrada_lpm;\n if('velocidad' in b)s.speed=b.velocidad;\n s.cid++;ss('sim',s);\n return r(200,{dispositivo:'B09',ts:new Date().toISOString(),aplicado:true,setpoints:{caudal_entrada_lpm:s.qset,dosificacion_ml_min:s.dset,velocidad:s.speed}});}\nif(m==='POST'&&p==='/api/B09/commands'){\n switch(b.comando){\n case 'activar_bomba':\n  if(typeof b.activa!=='boolean')return err(400,'activa debe ser booleano');\n  if(b.activa&&s.fault)return err(409,E409,'bomba en falla');\n  if(b.activa&&s.level>=3000)return err(409,E409,'tanque lleno');\n  if(s.pump===b.activa)return err(409,E409,'la bomba ya está en ese estado');\n  s.pump=b.activa;return done(201,b.comando);\n case 'modificar_dosificacion':{const e=setDose(b.ml_min);if(e)return e;return done(201,b.comando);}\n case 'iniciar_descarga':\n  if(s.discharge)return err(409,E409,'descarga en curso');\n  if(s.level<100)return err(409,E409,'nivel < 100 L');\n  if(!SPEC(s)&&b.forzar!==true)return err(409,E409,'agua fuera de especificación; use forzar:true para vaciar sin contar volumen tratado');\n  s.discharge=true;s.forced=b.forzar===true;return done(201,b.comando);\n case 'detener_descarga':\n  if(!s.discharge)return err(409,E409,'no hay descarga en curso');\n  s.discharge=false;return done(201,b.comando);\n case 'reconocer_alarma':{\n  if(typeof b.id!=='number')return err(400,'id numérico requerido');\n  const A=gs('alarms')||[],a=A.find(x=>x.id===b.id);\n  if(!a)return err(404,'alarma no encontrada');\n  if(a.reconocida)return err(409,E409,'alarma ya reconocida');\n  a.reconocida=true;a.hora_reconocimiento=new Date().toISOString();ss('alarms',A);return done(201,b.comando);}\n case 'inyectar_perturbacion':\n  if(b.tipo==='agua_turbia'){if(s.turbidEvent)return err(409,E409,'ya hay ingreso de agua turbia');s.turbidEvent=true;return done(201,b.comando);}\n  if(b.tipo==='falla_bomba'){if(s.fault)return err(409,E409,'la bomba ya está en falla');s.fault=true;s.pump=false;return done(201,b.comando);}\n  if(b.tipo==='normalizar'){if(!s.fault&&!s.turbidEvent)return err(409,E409,'no hay perturbaciones activas');s.fault=false;s.turbidEvent=false;return done(201,b.comando);}\n  return err(400,'tipo inválido',['agua_turbia','falla_bomba','normalizar']);\n case 'reiniciar':\n  s=INIT();ss('alarms',[]);ss('hist',[]);ss('clog',[]);return done(201,b.comando);\n default:return err(400,'comando desconocido',['activar_bomba','modificar_dosificacion','iniciar_descarga','detener_descarga','reconocer_alarma','inyectar_perturbacion','reiniciar']);\n }}\nreturn err(404,'ruta no encontrada');\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "b09n012"
+            ]
+        ]
+    },
+    {
+        "id": "b09n012",
+        "type": "link out",
+        "z": "b09tab3",
+        "name": "respuesta →",
+        "mode": "link",
+        "links": [
+            "b09n009"
+        ],
+        "x": 540,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2de400a1a36cfd57",
+        "type": "comment",
+        "z": "2fd21565f8570ecd",
+        "name": "Reloj de simulación: 1 s real = factor_tiempo s simulados (Euler, paso 1 s)",
+        "info": "Ecuaciones en el propio nodo de función. El estado vive en el contexto global \"b09\".",
+        "x": 300,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ba1e0c1db76b89af",
+        "type": "link out",
+        "z": "2fd21565f8570ecd",
+        "name": "sim → control",
+        "mode": "link",
+        "links": [
+            "8ce5fe7f43c8e09d"
+        ],
+        "x": 655,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "db4efd2d4385f41b",
+        "type": "function",
+        "z": "2fd21565f8570ecd",
+        "name": "Modelo físico TK-101",
+        "func": "// ===== B09 · Modelo físico (se ejecuta cada 1 s real) =====\n// Integra 'factor_tiempo' pasos de 1 s simulado (Euler explícito).\n// Ecuaciones:\n//   dV/dt     = (Qin - Qout)/60                                  [L/s]\n//   dD/dt     = (Dsp - D)/TAU_DOSE                               retardo de dosificación\n//   dTurb/dt  = (Qin/60)/V·(Turb_in - Turb) - k(D)·Turb,  k(D)=KMAX·D/(D+KD)\n//   dpH/dt    = (pH_in - ALPHA·D - pH)/TAU_PH\nconst S = global.get('b09');\nif (!S) return null;\nconst c = S.cfg, p = S.proc, a = S.act, k = S.kpi;\n\nfunction gauss() { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random();\n    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }\n\nconst steps = Math.max(1, Math.round(S.sp.factor_tiempo));\nfor (let i = 0; i < steps; i++) {\n    const dt = 1;\n    // Perturbación justificada: variabilidad lenta de la turbidez del agua cruda (paseo aleatorio acotado)\n    p.turb_in += 0.002 * (p.turb_in_base - p.turb_in) * dt + 0.05 * gauss();\n    if (p.turb_in < 0.5) p.turb_in = 0.5;\n\n    // Caudales dependen de las bombas (ruido ±2 % en la bomba de alimentación)\n    const bombaOK = a.bomba_on && !a.bomba_falla;\n    p.Qin = bombaOK ? c.QIN_NOM * (1 + 0.02 * gauss()) : 0;\n    if (a.descarga_on && p.V <= 1) a.descarga_on = false;\n    p.Qout = a.descarga_on ? c.QOUT_NOM : 0;\n\n    // Dosificación con retardo de primer orden (no se dosifica con tanque vacío)\n    const doseCmd = p.V > 50 ? S.sp.dosificacion_Lh : 0;\n    p.dose_eff += (doseCmd - p.dose_eff) * dt / c.TAU_DOSE;\n\n    // Balance de volumen con rebose\n    p.V += (p.Qin - p.Qout) / 60 * dt;\n    p.overflow = false;\n    if (p.V > c.CAP) { k.rebose_L += p.V - c.CAP; p.V = c.CAP; p.overflow = true; }\n    if (p.V < 0) p.V = 0;\n\n    // Calidad: mezcla completa + remoción por coagulación\n    const dil = (p.Qin / 60) / Math.max(p.V, 50);\n    const kr = c.KMAX * p.dose_eff / (p.dose_eff + c.KD);\n    p.turb += (dil * (p.turb_in - p.turb) - kr * p.turb) * dt;\n    if (p.turb < 0) p.turb = 0;\n    const pHeq = p.pH_in - c.ALPHA * p.dose_eff;\n    p.pH += (pHeq - p.pH) / c.TAU_PH * dt;\n    p.pH = Math.min(14, Math.max(0, p.pH));\n\n    // Acumuladores de KPI\n    p.en_spec = p.pH >= c.PH_MIN && p.pH <= c.PH_MAX && p.turb < c.TURB_OBJ;\n    k.t_total += dt;\n    if (p.en_spec) k.t_spec += dt;\n    if (!a.bomba_falla) k.t_disp += dt;\n    k.reactivo_L += doseCmd / 3600 * dt;\n    k.descargado_L += p.Qout / 60 * dt;\n    if (p.en_spec) k.tratado_L += p.Qout / 60 * dt;\n    p.t_sim += dt;\n}\n\n// Medición con ruido de instrumento (el ruido no altera el estado del modelo)\nS.meas = {\n    ts: new Date().toISOString(),\n    V: Math.min(c.CAP, Math.max(0, p.V + 2 * gauss())),\n    Qin: p.Qin, Qout: p.Qout,\n    pH: p.pH + 0.01 * gauss(),\n    turb: Math.max(0, p.turb + 0.03 * gauss()),\n    dose: S.sp.dosificacion_Lh, dose_eff: p.dose_eff\n};\nnode.status({ fill: p.en_spec ? 'green' : 'yellow', shape: 'dot',\n    text: `V=${p.V.toFixed(0)} L pH=${p.pH.toFixed(2)} T=${p.turb.toFixed(1)} NTU` });\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "ba1e0c1db76b89af"
+            ]
+        ]
+    },
+    {
+        "id": "00af26e195fdc571",
+        "type": "inject",
+        "z": "2fd21565f8570ecd",
+        "name": "tick 1 s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "db4efd2d4385f41b"
+            ]
+        ]
+    },
+    {
+        "id": "635406ae542c154c",
+        "type": "comment",
+        "z": "9e8ddab1ecb72cea",
+        "name": "Enclavamientos (modo auto) → alarmas con histéresis → histórico",
+        "info": "",
+        "x": 280,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "46d34ed4cca0e87f",
+        "type": "function",
+        "z": "9e8ddab1ecb72cea",
+        "name": "Control automático + alarmas + histórico",
+        "func": "// ===== B09 · Control automático, alarmas e histórico =====\nconst S = global.get('b09');\nif (!S || !S.meas) return null;\nconst c = S.cfg, p = S.proc, a = S.act, sp = S.sp;\nconst now = new Date().toISOString();\nconst fmt = v => (typeof v === 'number' ? v.toFixed(2) : v);\nfunction log(tipo, id, texto, sev) {\n    S.alarm_log.push({ ts: now, t_sim_s: Math.round(p.t_sim), tipo, id, texto, severidad: sev || null });\n    if (S.alarm_log.length > 500) S.alarm_log.shift();\n}\n\n// ---- 1. Enclavamientos (modo auto) ----\nif (sp.modo === 'auto' && a.bomba_on && p.V >= sp.nivel_alto_L) {\n    a.bomba_on = false; a.motivo_bomba = `auto: nivel alto (${sp.nivel_alto_L} L)`;\n    log('EVENTO', 'INT_NIVEL', 'P-101 detenida por enclavamiento de nivel alto');\n}\nif (a.descarga_on && p.V <= 1) {\n    a.descarga_on = false; log('EVENTO', 'INT_VACIO', 'Descarga detenida: tanque vacío');\n}\nif (sp.modo === 'auto' && a.descarga_on && !p.en_spec) {\n    a.descarga_on = false; log('EVENTO', 'INT_CALIDAD', 'Descarga detenida: agua fuera de especificación');\n}\n\n// ---- 2. Alarmas (con histéresis para evitar intermitencia) ----\nconst prev = id => !!(S.alarms[id] && S.alarms[id].activa);\nconst rank = s => ({ MEDIA: 1, ALTA: 2, CRITICA: 3 }[s] || 0);\nconst defs = [\n    { id: 'ALM_PH', nombre: 'pH fuera de rango', condicion: `pH < ${c.PH_MIN} o pH > ${c.PH_MAX}`, unidad: 'pH', valor: p.pH,\n      on: prev('ALM_PH') ? (p.pH < c.PH_MIN + 0.05 || p.pH > c.PH_MAX - 0.05) : (p.pH < c.PH_MIN || p.pH > c.PH_MAX),\n      sev: (p.pH < 6.0 || p.pH > 9.0) ? 'CRITICA' : 'ALTA' },\n    { id: 'ALM_TURB', nombre: 'Turbidez elevada', condicion: `turbidez > ${c.TURB_OBJ} NTU`, unidad: 'NTU', valor: p.turb,\n      on: prev('ALM_TURB') ? p.turb > c.TURB_OBJ * 0.9 : p.turb > c.TURB_OBJ,\n      sev: p.turb > 20 ? 'ALTA' : 'MEDIA' },\n    { id: 'ALM_OVF', nombre: 'Tanque desbordado', condicion: `nivel ≥ ${0.99 * c.CAP} L (rebose)`, unidad: 'L', valor: p.V,\n      on: prev('ALM_OVF') ? p.V > 0.97 * c.CAP : p.V >= 0.99 * c.CAP, sev: 'CRITICA' },\n    { id: 'ALM_BOMBA', nombre: 'Falla bomba P-101', condicion: 'señal de falla activa', unidad: '', valor: a.bomba_falla ? 1 : 0,\n      on: a.bomba_falla, sev: 'ALTA' }\n];\nfor (const d of defs) {\n    let A = S.alarms[d.id];\n    if (d.on) {\n        if (!A || !A.activa) {\n            S.alarms[d.id] = A = { id: d.id, nombre: d.nombre, condicion: d.condicion, severidad: d.sev,\n                activa: true, reconocida: false, t_activacion: now, t_normalizacion: null,\n                t_reconocimiento: null, valor: d.valor, unidad: d.unidad };\n            log('ACTIVADA', d.id, `${d.nombre} (${fmt(d.valor)} ${d.unidad})`, d.sev);\n        } else {\n            A.valor = d.valor;\n            if (rank(d.sev) > rank(A.severidad)) { A.severidad = d.sev; log('ESCALADA', d.id, `${d.nombre} → ${d.sev}`, d.sev); }\n        }\n    } else if (A && A.activa) {\n        A.activa = false; A.t_normalizacion = now; A.valor = d.valor;\n        log('NORMALIZADA', d.id, d.nombre, A.severidad);\n    }\n    // Una alarma normalizada y reconocida sale de la lista (queda en el registro)\n    if (A && !A.activa && A.reconocida) delete S.alarms[d.id];\n}\n\n// ---- 3. Histórico (1 muestra por segundo real) ----\nconst m = S.meas, r = (v, n) => Math.round(v * 10 ** n) / 10 ** n;\nS.history.push({ ts: m.ts, t: Math.round(p.t_sim), nivel: r(m.V, 1), caudal_entrada: r(m.Qin, 1),\n    caudal_salida: r(m.Qout, 1), ph: r(m.pH, 3), turbidez: r(m.turb, 2), dosificacion: r(sp.dosificacion_Lh, 2) });\nwhile (S.history.length > c.HIST_MAX) S.history.shift();\n\nconst nAct = Object.values(S.alarms).filter(x => x.activa).length;\nnode.status({ fill: nAct ? 'red' : 'green', shape: 'ring', text: `${nAct} alarma(s) activa(s)` });\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8ce5fe7f43c8e09d",
+        "type": "link in",
+        "z": "9e8ddab1ecb72cea",
+        "name": "sim → control",
+        "links": [
+            "ba1e0c1db76b89af"
+        ],
+        "x": 135,
+        "y": 100,
+        "wires": [
+            [
+                "46d34ed4cca0e87f"
+            ]
+        ]
+    },
+    {
+        "id": "cdc477a1ac133bce",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Responder (cabeceras, latencia, registro)",
+        "func": "// ===== Responder: cabeceras, latencia simulada y registro de solicitudes de control =====\nconst S0 = global.get('b09');\nconst lat = (S0 && S0.sp && S0.sp.latencia_ms) || 0;\n// Cabeceras de la respuesta (JSON, sin caché, CORS)\nmsg.headers = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store',\n                'Access-Control-Allow-Origin': '*', 'X-Device': 'B09' };\nfunction finish() {\n    const S = global.get('b09');\n    if (msg._logCmd && S) {\n        const entry = { ts: new Date().toISOString(), metodo: msg.req.method, ruta: msg.req.originalUrl || msg.req.url,\n                        comando: msg._cmd || null, codigo: msg.statusCode, tiempo_ms: Date.now() - msg._t0 };\n        S.cmd_log.push(entry);\n        if (S.cmd_log.length > 300) S.cmd_log.shift();\n        if (msg.payload && typeof msg.payload === 'object') msg.payload.tiempo_servidor_ms = entry.tiempo_ms;\n        node.status({ fill: msg.statusCode < 300 ? 'green' : 'red', shape: 'dot', text: `${entry.metodo} ${entry.comando} → ${entry.codigo} (${entry.tiempo_ms} ms)` });\n    }\n    node.send(msg);\n}\nif (lat > 0) setTimeout(finish, lat); else finish();\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 340,
+        "wires": [
+            [
+                "153883da0c287b8e"
+            ]
+        ]
+    },
+    {
+        "id": "153883da0c287b8e",
+        "type": "http response",
+        "z": "1835dc825e564edc",
+        "name": "HTTP Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2a28cb91a0b0ff54",
+        "type": "comment",
+        "z": "1835dc825e564edc",
+        "name": "API REST /api/B09 · GET lecturas · POST comandos · PUT consignas",
+        "info": "",
+        "x": 300,
+        "y": 30,
+        "wires": []
+    },
+    {
+        "id": "888fe3a39c750c40",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Telemetría",
+        "func": "// GET /api/B09/telemetry → lectura instantánea de las variables del proceso\nconst S = global.get('b09');\nif (!S || !S.meas) { msg.statusCode = 503; msg.payload = { device: 'B09', ts: new Date().toISOString(), error: 'Simulador no inicializado' }; return msg; }\nconst m = S.meas, r = (v, n) => Math.round(v * 10 ** n) / 10 ** n;\nmsg.statusCode = 200;\nmsg.payload = {\n    device: 'B09', ts: m.ts, t_sim_s: Math.round(S.proc.t_sim),\n    data: {\n        nivel:          { value: r(m.V, 1), unit: 'L' },\n        nivel_pct:      { value: r(100 * m.V / S.cfg.CAP, 1), unit: '%' },\n        caudal_entrada: { value: r(m.Qin, 1), unit: 'L/min' },\n        caudal_salida:  { value: r(m.Qout, 1), unit: 'L/min' },\n        caudal_neto:    { value: r(m.Qin - m.Qout, 1), unit: 'L/min' },\n        ph:             { value: r(m.pH, 2), unit: 'pH' },\n        turbidez:       { value: r(m.turb, 2), unit: 'NTU' },\n        dosificacion:   { value: r(m.dose, 2), unit: 'L/h' },\n        dosis_efectiva: { value: r(m.dose_eff, 2), unit: 'L/h' }\n    }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "3d87a232a21bde07",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/telemetry",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 80,
+        "wires": [
+            [
+                "888fe3a39c750c40"
+            ]
+        ]
+    },
+    {
+        "id": "ce6279ce73b56fd3",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Estado",
+        "func": "// GET /api/B09/status → estado de actuadores, modo, consignas y resumen de alarmas\nconst S = global.get('b09');\nif (!S) { msg.statusCode = 503; msg.payload = { device: 'B09', ts: new Date().toISOString(), error: 'Simulador no inicializado' }; return msg; }\nconst a = S.act, p = S.proc, c = S.cfg;\nconst al = Object.values(S.alarms);\nmsg.statusCode = 200;\nmsg.payload = {\n    device: 'B09', ts: new Date().toISOString(), t_sim_s: Math.round(p.t_sim),\n    modo: S.sp.modo,\n    en_especificacion: p.en_spec,\n    rebosando: p.overflow,\n    bomba_alimentacion: { id: 'P-101', estado: a.bomba_falla ? 'FALLA' : (a.bomba_on ? 'ON' : 'OFF'),\n                          comandada: a.bomba_on, falla: a.bomba_falla, motivo: a.motivo_bomba },\n    bomba_descarga: { id: 'P-103', estado: a.descarga_on ? 'ON' : 'OFF' },\n    dosificadora: { id: 'P-102', estado: S.sp.dosificacion_Lh > 0 && p.V > 50 ? 'ON' : 'OFF',\n                    consigna_Lh: S.sp.dosificacion_Lh, efectiva_Lh: Math.round(p.dose_eff * 100) / 100 },\n    agitador: { id: 'M-101', estado: p.V > 50 ? 'ON' : 'OFF' },\n    setpoints: Object.assign({}, S.sp),\n    perturbacion: { turbidez_entrada_NTU: Math.round(p.turb_in * 10) / 10, ph_entrada: p.pH_in },\n    alarmas: { activas: al.filter(x => x.activa).length, sin_reconocer: al.filter(x => !x.reconocida).length },\n    limites: { capacidad_L: c.CAP, ph_min: c.PH_MIN, ph_max: c.PH_MAX, turbidez_objetivo_NTU: c.TURB_OBJ,\n               dosificacion_max_Lh: c.DOSE_MAX, volumen_min_descarga_L: c.V_MIN_DESC }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 140,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "4c4bef3a2b833003",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/status",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "ce6279ce73b56fd3"
+            ]
+        ]
+    },
+    {
+        "id": "2964b3b3dba9bf6f",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "KPI",
+        "func": "// GET /api/B09/kpis → cinco KPI con fórmula y unidades\nconst S = global.get('b09');\nif (!S) { msg.statusCode = 503; msg.payload = { device: 'B09', ts: new Date().toISOString(), error: 'Simulador no inicializado' }; return msg; }\nconst k = S.kpi, T = Math.max(k.t_total, 1), r = (v, n) => Math.round(v * 10 ** n) / 10 ** n;\nmsg.statusCode = 200;\nmsg.payload = {\n    device: 'B09', ts: new Date().toISOString(), t_sim_s: Math.round(S.proc.t_sim),\n    kpis: {\n        volumen_tratado:    { value: r(k.tratado_L / 1000, 3), unit: 'm³',\n            formula: 'Σ Qsal·Δt (solo si pH∈[6,5;8,5] y turbidez<5 NTU) / 1000' },\n        tiempo_en_especificacion: { value: r(100 * k.t_spec / T, 1), unit: '%',\n            formula: '100 · t(en especificación) / t(proceso)' },\n        consumo_reactivo:   { value: r(k.reactivo_L, 3), unit: 'L',\n            formula: 'Σ Dosificación[L/h]·Δt/3600' },\n        tiempo_proceso:     { value: r(k.t_total / 60, 1), unit: 'min',\n            formula: 'Σ Δt simulado / 60' },\n        disponibilidad:     { value: r(100 * k.t_disp / T, 1), unit: '%',\n            formula: '100 · t(P-101 sin falla) / t(proceso)' }\n    },\n    adicionales: {\n        volumen_descargado: { value: r(k.descargado_L / 1000, 3), unit: 'm³' },\n        volumen_rebosado:   { value: r(k.rebose_L, 1), unit: 'L' }\n    }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "5bd6af8cc1c45129",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/kpis",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "2964b3b3dba9bf6f"
+            ]
+        ]
+    },
+    {
+        "id": "9770121e309d1240",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Histórico (window, vars)",
+        "func": "// GET /api/B09/history?window=10&vars=nivel,turbidez&max_points=300\nconst S = global.get('b09');\nconst q = (msg.req && msg.req.query) || {};\nconst VARS = { nivel: 'L', caudal_entrada: 'L/min', caudal_salida: 'L/min', ph: 'pH', turbidez: 'NTU', dosificacion: 'L/h' };\nfunction bad(err) { msg.statusCode = 400; msg.payload = { device: 'B09', ts: new Date().toISOString(), error: err,\n    parametros: { window: 'minutos reales, 1–60 (defecto 10)', vars: Object.keys(VARS).join(','), max_points: '10–1000 (defecto 300)' } }; return msg; }\nif (!S) { msg.statusCode = 503; msg.payload = { error: 'Simulador no inicializado' }; return msg; }\nconst win = q.window === undefined ? 10 : Number(q.window);\nif (!Number.isFinite(win) || win < 1 || win > 60) return bad('window fuera de rango (1–60 min)');\nconst maxp = q.max_points === undefined ? 300 : Number(q.max_points);\nif (!Number.isInteger(maxp) || maxp < 10 || maxp > 1000) return bad('max_points fuera de rango (10–1000)');\nconst vars = q.vars ? String(q.vars).split(',').map(s => s.trim()).filter(Boolean) : Object.keys(VARS);\nconst unk = vars.filter(v => !VARS[v]);\nif (unk.length) return bad('Variable(s) desconocida(s): ' + unk.join(','));\nconst t0 = Date.now() - win * 60000;\nconst sel = S.history.filter(h => Date.parse(h.ts) >= t0);\nconst stride = Math.max(1, Math.ceil(sel.length / maxp));\nconst samples = [];\nfor (let i = 0; i < sel.length; i += stride) {\n    const h = sel[i], o = { ts: h.ts, t_sim_s: h.t };\n    for (const v of vars) o[v] = h[v];\n    samples.push(o);\n}\nconst units = {}; vars.forEach(v => units[v] = VARS[v]);\nmsg.statusCode = 200;\nmsg.payload = { device: 'B09', ts: new Date().toISOString(), window_min: win, vars, units, count: samples.length, samples };\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 260,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "3a0c9ecd85bca176",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/history",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "9770121e309d1240"
+            ]
+        ]
+    },
+    {
+        "id": "71fe03befea621df",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Alarmas + registro",
+        "func": "// GET /api/B09/alarms → alarmas vigentes + registro (últimos 100 eventos)\nconst S = global.get('b09');\nif (!S) { msg.statusCode = 503; msg.payload = { error: 'Simulador no inicializado' }; return msg; }\nmsg.statusCode = 200;\nmsg.payload = { device: 'B09', ts: new Date().toISOString(),\n    alarmas: Object.values(S.alarms), registro: S.alarm_log.slice(-100).reverse() };\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 320,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "aa20bd19a8a29e8e",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/alarms",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "71fe03befea621df"
+            ]
+        ]
+    },
+    {
+        "id": "12d334f87c545a54",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Alarma por id",
+        "func": "// GET /api/B09/alarms/:id → detalle de una alarma (404 si no existe)\nconst S = global.get('b09');\nconst id = String(msg.req.params.id || '').toUpperCase();\nconst KNOWN = ['ALM_PH', 'ALM_TURB', 'ALM_OVF', 'ALM_BOMBA'];\nif (!KNOWN.includes(id)) {\n    msg.statusCode = 404;\n    msg.payload = { device: 'B09', ts: new Date().toISOString(), error: `Alarma '${id}' no existe`, alarmas_definidas: KNOWN };\n    return msg;\n}\nmsg.statusCode = 200;\nmsg.payload = { device: 'B09', ts: new Date().toISOString(), id,\n    vigente: S.alarms[id] || null, registro: S.alarm_log.filter(e => e.id === id).slice(-50).reverse() };\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "4066d9e23438692a",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/alarms/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "12d334f87c545a54"
+            ]
+        ]
+    },
+    {
+        "id": "07a0629dd37cbc72",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Registro de comandos",
+        "func": "// GET /api/B09/commands/log → registro de solicitudes de control (código y tiempo)\nconst S = global.get('b09');\nmsg.statusCode = 200;\nmsg.payload = { device: 'B09', ts: new Date().toISOString(), registro: (S ? S.cmd_log : []).slice().reverse() };\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 440,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "9496ffa79b667979",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/commands/log",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "07a0629dd37cbc72"
+            ]
+        ]
+    },
+    {
+        "id": "09df815d9473547a",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Comandos (validación 400/404/409)",
+        "func": "// ===== POST /api/B09/commands =====\n// Cuerpo JSON: { \"command\": \"<nombre>\", ...parámetros }\n// 200 ejecutado · 400 solicitud inválida/fuera de rango · 404 recurso inexistente · 409 incompatible con el estado\nmsg._t0 = Date.now(); msg._logCmd = true;\nlet S = global.get('b09');\nconst COMANDOS = ['bomba_on', 'bomba_off', 'dosificacion', 'descarga_on', 'descarga_off', 'falla_bomba',\n                  'reparar_bomba', 'perturbacion', 'ack_alarma', 'ack_todas', 'reiniciar'];\nfunction out(code, body) {\n    msg.statusCode = code;\n    msg.payload = Object.assign({ device: 'B09', ts: new Date().toISOString(), ok: code < 300, command: msg._cmd || null }, body);\n    return msg;\n}\nif (!S) return out(503, { error: 'Simulador no inicializado' });\nlet b = msg.payload;\nif (typeof b === 'string') { try { b = JSON.parse(b); } catch (e) { return out(400, { error: 'JSON inválido' }); } }\nif (!b || typeof b !== 'object' || Array.isArray(b)) return out(400, { error: 'El cuerpo debe ser un objeto JSON', comandos_validos: COMANDOS });\nconst cmd = b.command; msg._cmd = typeof cmd === 'string' ? cmd : null;\nif (typeof cmd !== 'string') return out(400, { error: \"Falta el campo 'command'\", comandos_validos: COMANDOS });\n\nconst c = S.cfg, p = S.proc, a = S.act, sp = S.sp;\nconst num = v => (typeof v === 'number' ? v : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN));\nfunction ev(texto) { S.alarm_log.push({ ts: new Date().toISOString(), t_sim_s: Math.round(p.t_sim), tipo: 'COMANDO', id: cmd, texto, severidad: null });\n    if (S.alarm_log.length > 500) S.alarm_log.shift(); }\n\nswitch (cmd) {\ncase 'bomba_on':\n    if (a.bomba_falla) return out(409, { error: 'P-101 en falla: ejecute reparar_bomba antes de arrancar' });\n    if (a.bomba_on) return out(409, { error: 'P-101 ya está en marcha' });\n    if (sp.modo === 'auto' && p.V >= sp.nivel_alto_L) return out(409, { error: `Enclavamiento: nivel ${p.V.toFixed(0)} L ≥ nivel alto ${sp.nivel_alto_L} L` });\n    a.bomba_on = true; a.motivo_bomba = 'comando remoto'; ev('P-101 arrancada');\n    return out(200, { resultado: 'Bomba P-101 en marcha' });\n\ncase 'bomba_off':\n    if (!a.bomba_on) return out(409, { error: 'P-101 ya está detenida' });\n    a.bomba_on = false; a.motivo_bomba = 'comando remoto'; ev('P-101 detenida');\n    return out(200, { resultado: 'Bomba P-101 detenida' });\n\ncase 'dosificacion': {\n    const v = num(b.value);\n    if (!Number.isFinite(v)) return out(400, { error: \"Falta 'value' numérico (L/h)\" });\n    if (v < 0 || v > c.DOSE_MAX) return out(400, { error: `Dosificación fuera de rango: ${v} L/h (permitido 0–${c.DOSE_MAX})` });\n    if (v > 0 && p.V <= 50) return out(409, { error: 'No se puede dosificar con el tanque vacío' });\n    const prev = sp.dosificacion_Lh; sp.dosificacion_Lh = v; ev(`Dosificación ${prev} → ${v} L/h`);\n    return out(200, { resultado: `Dosificación ajustada a ${v} L/h`, anterior: prev });\n}\n\ncase 'descarga_on':\n    if (a.descarga_on) return out(409, { error: 'La descarga ya está activa' });\n    if (p.V < c.V_MIN_DESC) return out(409, { error: `Nivel insuficiente para descargar (${p.V.toFixed(0)} L < ${c.V_MIN_DESC} L)` });\n    if (sp.modo === 'auto' && !p.en_spec) return out(409, { error: 'Agua fuera de especificación: en modo auto no se permite descargar',\n        ph: +p.pH.toFixed(2), turbidez: +p.turb.toFixed(2) });\n    a.descarga_on = true; ev('Descarga P-103 iniciada');\n    return out(200, { resultado: 'Descarga iniciada', advertencia: p.en_spec ? undefined : 'Descargando agua fuera de especificación (modo manual)' });\n\ncase 'descarga_off':\n    if (!a.descarga_on) return out(409, { error: 'La descarga no está activa' });\n    a.descarga_on = false; ev('Descarga P-103 detenida');\n    return out(200, { resultado: 'Descarga detenida' });\n\ncase 'falla_bomba':\n    if (a.bomba_falla) return out(409, { error: 'P-101 ya está en falla' });\n    a.bomba_falla = true; a.bomba_on = false; a.motivo_bomba = 'falla (disparo térmico simulado)'; ev('Falla inyectada en P-101');\n    return out(200, { resultado: 'Falla inyectada en P-101' });\n\ncase 'reparar_bomba':\n    if (!a.bomba_falla) return out(409, { error: 'P-101 no tiene falla activa' });\n    a.bomba_falla = false; a.motivo_bomba = 'reparada, detenida'; ev('P-101 reparada');\n    return out(200, { resultado: 'P-101 reparada (detenida; envíe bomba_on para arrancar)' });\n\ncase 'perturbacion': {\n    const t = b.turbidez_entrada === undefined ? undefined : num(b.turbidez_entrada);\n    const ph = b.ph_entrada === undefined ? undefined : num(b.ph_entrada);\n    if (t === undefined && ph === undefined) return out(400, { error: \"Indique 'turbidez_entrada' (1–500 NTU) y/o 'ph_entrada' (4–10)\" });\n    if (t !== undefined && (!Number.isFinite(t) || t < 1 || t > 500)) return out(400, { error: 'turbidez_entrada fuera de rango (1–500 NTU)' });\n    if (ph !== undefined && (!Number.isFinite(ph) || ph < 4 || ph > 10)) return out(400, { error: 'ph_entrada fuera de rango (4–10)' });\n    if (t !== undefined) { p.turb_in_base = t; p.turb_in = t; }\n    if (ph !== undefined) p.pH_in = ph;\n    ev(`Perturbación agua cruda: turbidez=${p.turb_in_base} NTU, pH=${p.pH_in}`);\n    return out(200, { resultado: 'Perturbación aplicada', turbidez_entrada: p.turb_in_base, ph_entrada: p.pH_in });\n}\n\ncase 'ack_alarma': {\n    const id = typeof b.alarm_id === 'string' ? b.alarm_id.toUpperCase() : null;\n    if (!id) return out(400, { error: \"Falta 'alarm_id'\" });\n    if (!['ALM_PH', 'ALM_TURB', 'ALM_OVF', 'ALM_BOMBA'].includes(id)) return out(404, { error: `Alarma '${id}' no existe` });\n    const A = S.alarms[id];\n    if (!A) return out(409, { error: `La alarma ${id} no está pendiente` });\n    if (A.reconocida) return out(409, { error: `La alarma ${id} ya fue reconocida` });\n    A.reconocida = true; A.t_reconocimiento = new Date().toISOString();\n    S.alarm_log.push({ ts: A.t_reconocimiento, t_sim_s: Math.round(p.t_sim), tipo: 'RECONOCIDA', id, texto: A.nombre, severidad: A.severidad });\n    return out(200, { resultado: `Alarma ${id} reconocida`, alarma: A });\n}\n\ncase 'ack_todas': {\n    const pend = Object.values(S.alarms).filter(x => !x.reconocida);\n    if (!pend.length) return out(409, { error: 'No hay alarmas pendientes de reconocimiento' });\n    const t = new Date().toISOString();\n    pend.forEach(A => { A.reconocida = true; A.t_reconocimiento = t;\n        S.alarm_log.push({ ts: t, t_sim_s: Math.round(p.t_sim), tipo: 'RECONOCIDA', id: A.id, texto: A.nombre, severidad: A.severidad }); });\n    return out(200, { resultado: `${pend.length} alarma(s) reconocida(s)`, ids: pend.map(x => x.id) });\n}\n\ncase 'reiniciar': {\n    const N = JSON.parse(global.get('b09_defaults'));\n    N.meta = { iniciado: new Date().toISOString(), origen: 'reinicio' };\n    N.cmd_log = S.cmd_log;            // se conserva el registro de comandos\n    global.set('b09', N);\n    return out(200, { resultado: 'Simulación reiniciada a condiciones iniciales' });\n}\n\ndefault:\n    return out(400, { error: `Comando desconocido '${cmd}'`, comandos_validos: COMANDOS });\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 500,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "16f718cb43202284",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/commands",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 500,
+        "wires": [
+            [
+                "09df815d9473547a"
+            ]
+        ]
+    },
+    {
+        "id": "51ce37b9e7595d94",
+        "type": "function",
+        "z": "1835dc825e564edc",
+        "name": "Consignas (validación 400/409)",
+        "func": "// ===== PUT /api/B09/setpoint =====\n// Cuerpo JSON con uno o más campos. Se validan todos antes de aplicar (operación atómica).\nmsg._t0 = Date.now(); msg._logCmd = true; msg._cmd = 'setpoint';\nconst S = global.get('b09');\nfunction out(code, body) {\n    msg.statusCode = code;\n    msg.payload = Object.assign({ device: 'B09', ts: new Date().toISOString(), ok: code < 300 }, body);\n    return msg;\n}\nif (!S) return out(503, { error: 'Simulador no inicializado' });\nconst RULES = {\n    dosificacion_Lh: { min: 0, max: S.cfg.DOSE_MAX, unit: 'L/h' },\n    nivel_alto_L:    { min: 500, max: S.cfg.CAP, unit: 'L' },\n    factor_tiempo:   { min: 1, max: 60, unit: 'x', int: true },\n    latencia_ms:     { min: 0, max: 10000, unit: 'ms', int: true },\n    modo:            { enum: ['auto', 'manual'] }\n};\nlet b = msg.payload;\nif (typeof b === 'string') { try { b = JSON.parse(b); } catch (e) { return out(400, { error: 'JSON inválido' }); } }\nif (!b || typeof b !== 'object' || Array.isArray(b) || !Object.keys(b).length)\n    return out(400, { error: 'Envíe un objeto JSON con al menos un campo', campos: RULES });\nconst errores = [], cambios = {};\nfor (const [key, val] of Object.entries(b)) {\n    const R = RULES[key];\n    if (!R) { errores.push(`Campo desconocido '${key}'`); continue; }\n    if (R.enum) { if (!R.enum.includes(val)) errores.push(`${key} debe ser uno de: ${R.enum.join(', ')}`); else cambios[key] = val; continue; }\n    const v = typeof val === 'number' ? val : Number(val);\n    if (val === null || val === '' || !Number.isFinite(v)) { errores.push(`${key} debe ser numérico`); continue; }\n    if (R.int && !Number.isInteger(v)) { errores.push(`${key} debe ser entero`); continue; }\n    if (v < R.min || v > R.max) { errores.push(`${key}=${v} fuera de rango (${R.min}–${R.max} ${R.unit})`); continue; }\n    cambios[key] = v;\n}\nif (errores.length) return out(400, { error: errores.join('; '), errores, campos: RULES });\nif (cambios.dosificacion_Lh > 0 && S.proc.V <= 50) return out(409, { error: 'No se puede dosificar con el tanque vacío' });\nconst anterior = {};\nfor (const k of Object.keys(cambios)) anterior[k] = S.sp[k];\nObject.assign(S.sp, cambios);\nS.alarm_log.push({ ts: new Date().toISOString(), t_sim_s: Math.round(S.proc.t_sim), tipo: 'CONSIGNA', id: 'setpoint',\n    texto: Object.entries(cambios).map(([k, v]) => `${k}: ${anterior[k]} → ${v}`).join(', '), severidad: null });\nreturn out(200, { resultado: 'Consignas actualizadas', aplicados: cambios, anterior, setpoints: S.sp });\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 560,
+        "wires": [
+            [
+                "cdc477a1ac133bce"
+            ]
+        ]
+    },
+    {
+        "id": "58b18eb2fc8b7499",
+        "type": "http in",
+        "z": "1835dc825e564edc",
+        "name": "",
+        "url": "/api/B09/setpoint",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "51ce37b9e7595d94"
+            ]
+        ]
+    },
+    {
+        "id": "5afe55b414fbb997",
+        "type": "comment",
+        "z": "3db0a3808e0a91d1",
+        "name": "Abrir http://<host>:1880/B09 · el HTML consume la API solo con fetch() + polling",
+        "info": "",
+        "x": 320,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "07338761bd706b5f",
+        "type": "template",
+        "z": "3db0a3808e0a91d1",
+        "name": "dashboard_B09.html",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "plain",
+        "template": "<!doctype html>\n<html lang=\"es\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>B09 · Gemelo digital PTA</title>\n<style>\n:root{\n  --bg:#0c141e; --panel:#121e2c; --panel2:#182839; --line:#263a52; --txt:#e4edf6; --mut:#8aa0b8;\n  --acc:#38b2ff; --ok:#2ecc71; --warn:#f5b041; --bad:#ff6b5c; --crit:#ff2d55;\n  --pipe:#3a4f68; --water:#3d8fd6; --steel:#5d7590;\n}\n*{box-sizing:border-box}\nhtml,body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.45 \"Segoe UI\",system-ui,Roboto,sans-serif}\nbutton,input,select{font:inherit}\nheader{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;\n  padding:10px 18px;background:var(--panel);border-bottom:1px solid var(--line)}\nheader h1{font-size:16px;margin:0;font-weight:600;letter-spacing:.2px}\nheader h1 small{color:var(--mut);font-weight:400}\n.sp{flex:1}\n.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;background:var(--panel2);\n  border:1px solid var(--line);font-size:12px;color:var(--mut)}\n.dot{width:8px;height:8px;border-radius:50%;background:var(--mut)}\n.dot.ok{background:var(--ok);box-shadow:0 0 8px var(--ok)} .dot.bad{background:var(--bad);box-shadow:0 0 8px var(--bad)}\n.tabs{display:flex;gap:4px}\n.tabs button{background:transparent;border:1px solid var(--line);color:var(--mut);padding:5px 14px;border-radius:6px;cursor:pointer}\n.tabs button.on{background:var(--acc);border-color:var(--acc);color:#04121f;font-weight:600}\nheader label{font-size:12px;color:var(--mut)}\nheader select,header input{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:5px;padding:3px 6px}\n#alarmbar{display:flex;flex-direction:column;gap:6px;padding:8px 18px 0}\n.alm{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:7px 12px;border-radius:7px;border:1px solid;font-size:13px}\n.alm.CRITICA{background:#3a0f1a;border-color:var(--crit)} .alm.ALTA{background:#3a1a12;border-color:var(--bad)}\n.alm.MEDIA{background:#3a2d10;border-color:var(--warn)}\n.alm.unack{animation:blink 1s steps(2) infinite}\n.alm.cleared{opacity:.65;border-style:dashed}\n@keyframes blink{50%{filter:brightness(1.6)}}\n.alm b{font-weight:600} .alm .sev{font-size:11px;padding:1px 7px;border-radius:4px;background:#0006}\n.alm button{margin-left:auto}\nmain{padding:14px 18px 30px}\n.view{display:none} .view.on{display:block}\n.grid{display:grid;gap:14px}\n.g-op{grid-template-columns:minmax(0,1fr) 330px}\n@media (max-width:1000px){.g-op{grid-template-columns:1fr}}\n.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}\n.card h2{font-size:13px;margin:0 0 10px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.8px}\n.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}\n.tile{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:8px;padding:9px 12px}\n.tile.warn{border-left-color:var(--warn)} .tile.bad{border-left-color:var(--bad)}\n.tile .k{font-size:12px;color:var(--mut)} .tile .v{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}\n.tile .v small{font-size:13px;color:var(--mut);font-weight:400} .tile .s{font-size:11px;color:var(--mut)}\n.ctl{display:grid;gap:10px}\n.ctl .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}\n.ctl .row > span{min-width:96px;color:var(--mut);font-size:12px}\n.btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:6px 12px;border-radius:6px;cursor:pointer}\n.btn:hover{border-color:var(--acc)} .btn.p{background:#0f4f7a;border-color:var(--acc)}\n.btn.g{background:#114d2d;border-color:var(--ok)} .btn.r{background:#5a1a1a;border-color:var(--bad)}\n.btn.y{background:#5a440f;border-color:var(--warn)} .btn:disabled{opacity:.45;cursor:default}\ninput[type=number]{width:80px;background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:5px;padding:5px}\ninput[type=range]{flex:1;accent-color:var(--acc)}\n.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}\n.seg button{background:transparent;border:0;color:var(--mut);padding:5px 12px;cursor:pointer}\n.seg button.on{background:var(--acc);color:#04121f;font-weight:600}\n#lastcmd{font-family:ui-monospace,Consolas,monospace;font-size:12px;background:#070d14;border:1px solid var(--line);\n  border-radius:6px;padding:8px;min-height:54px;white-space:pre-wrap;word-break:break-word}\n.code{display:inline-block;min-width:44px;text-align:center;padding:1px 6px;border-radius:4px;font-weight:600;font-size:12px}\n.c2{background:#114d2d;color:#8ff0b6} .c4{background:#5a1a1a;color:#ffb3aa} .c5,.cT{background:#5a440f;color:#ffe08a}\n.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:14px}\n.kpi{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:9px 12px}\n.kpi .k{font-size:12px;color:var(--mut)} .kpi .v{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}\n.kpi .f{font-size:11px;color:var(--mut);margin-top:2px}\n/* --- P&ID --- */\n#pid{width:100%;height:auto;display:block}\n#pid text{fill:var(--txt);font-size:12px;font-family:inherit}\n#pid .lbl{fill:var(--mut);font-size:11px}\n#pid .tag{font-size:10px;fill:var(--mut);font-weight:600}\n.pipe{fill:none;stroke:var(--pipe);stroke-width:10;stroke-linejoin:round;stroke-linecap:round}\n.flow{fill:none;stroke:var(--water);stroke-width:5;stroke-dasharray:10 14;stroke-linecap:round;opacity:0;stroke-linejoin:round}\n.flow.on{opacity:1;animation:dash .9s linear infinite}\n.flow.dose{stroke:#d8c46a;stroke-width:3;stroke-dasharray:4 8}\n.flow.ovf{stroke:var(--bad)}\n@keyframes dash{to{stroke-dashoffset:-24}}\n.pump-body{fill:#22374d;stroke:var(--steel);stroke-width:3}\n.pump.run .pump-body{stroke:var(--ok)} .pump.fault .pump-body{fill:#5a1a1a;stroke:var(--bad);animation:blink .7s steps(2) infinite}\n.imp{stroke:#c9d6e3;stroke-width:3;stroke-linecap:round;transform-box:fill-box;transform-origin:center}\n.pump.run .imp{animation:spin .6s linear infinite}\n@keyframes spin{to{transform:rotate(360deg)}}\n.blades{transform-box:fill-box;transform-origin:center}\n.mix.run .blades{animation:prop .5s linear infinite}\n@keyframes prop{0%{transform:scaleX(1)}50%{transform:scaleX(-1)}100%{transform:scaleX(1)}}\n.drop{fill:#d8c46a;opacity:0}\n.dosing .drop{animation:drop 1.2s ease-in infinite}\n.dosing .drop:nth-child(2){animation-delay:.4s} .dosing .drop:nth-child(3){animation-delay:.8s}\n@keyframes drop{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(70px)}}\n.inst circle{fill:#0d1724;stroke:var(--steel);stroke-width:1.5}\n.inst.alarm circle{stroke:var(--bad);stroke-width:2.5}\n#tankwall{fill:none;stroke:#8aa0b8;stroke-width:3}\n#tank.ovf #tankwall{stroke:var(--bad);animation:blink .6s steps(2) infinite}\n.wave{animation:wave 3s ease-in-out infinite alternate}\n@keyframes wave{to{transform:translateX(-14px)}}\n/* --- Ingeniería --- */\n.g-eng{grid-template-columns:repeat(2,minmax(0,1fr))}\n@media (max-width:1000px){.g-eng{grid-template-columns:1fr}}\n.chart{width:100%;height:190px;display:block}\n.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}\n.toolbar label{color:var(--mut);font-size:12px}\n.toolbar select{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:5px;padding:4px 6px}\ntable{width:100%;border-collapse:collapse;font-size:12px}\nth,td{text-align:left;padding:5px 7px;border-bottom:1px solid var(--line);vertical-align:top}\nth{color:var(--mut);font-weight:600;position:sticky;top:0;background:var(--panel)}\ntd.num{text-align:right;font-variant-numeric:tabular-nums}\n.scroll{max-height:290px;overflow:auto}\n.span2{grid-column:1/-1}\npre.json{margin:0;font-size:11px;background:#070d14;border:1px solid var(--line);border-radius:6px;padding:8px;max-height:290px;overflow:auto}\n.form{display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;align-items:center}\n.form label{color:var(--mut);font-size:12px}\n.form .u{color:var(--mut);font-size:12px}\n.form select{background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:5px;padding:5px}\n.muted{color:var(--mut);font-size:12px}\n.ev-ACTIVADA{color:var(--bad)} .ev-ESCALADA{color:var(--crit)} .ev-NORMALIZADA{color:var(--ok)} .ev-RECONOCIDA{color:var(--acc)}\n</style>\n</head>\n<body>\n<header>\n  <h1>B09 · Planta de tratamiento de aguas <small>— gemelo digital (HTTP/REST)</small></h1>\n  <span class=\"badge\"><span class=\"dot\" id=\"conn\"></span><span id=\"conntxt\">conectando…</span></span>\n  <span class=\"badge\">t<sub>sim</sub> <b id=\"tsim\">—</b></span>\n  <span class=\"badge\">modo <b id=\"hmode\">—</b></span>\n  <span class=\"sp\"></span>\n  <label>Polling <select id=\"poll\">\n    <option value=\"500\">500 ms</option><option value=\"1000\" selected>1000 ms</option>\n    <option value=\"2000\">2000 ms</option><option value=\"5000\">5000 ms</option></select></label>\n  <label>Timeout <input id=\"tmo\" type=\"number\" value=\"3000\" min=\"200\" step=\"100\" style=\"width:72px\"> ms</label>\n  <div class=\"tabs\"><button data-v=\"op\" class=\"on\">Operación</button><button data-v=\"eng\">Ingeniería</button></div>\n</header>\n<div id=\"alarmbar\"></div>\n<main>\n<!-- ================= VISTA OPERACIÓN ================= -->\n<section class=\"view on\" id=\"v-op\">\n <div class=\"grid g-op\">\n  <div class=\"card\">\n   <h2>Diagrama de proceso</h2>\n   <svg id=\"pid\" viewBox=\"0 0 960 440\" role=\"img\" aria-label=\"Diagrama P&ID de la planta\">\n    <defs>\n      <clipPath id=\"tankclip\"><rect x=\"382\" y=\"82\" width=\"236\" height=\"296\" rx=\"6\"/></clipPath>\n      <linearGradient id=\"wgrad\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n        <stop offset=\"0\" stop-color=\"#fff\" stop-opacity=\".18\"/><stop offset=\"1\" stop-color=\"#000\" stop-opacity=\".15\"/>\n      </linearGradient>\n    </defs>\n    <!-- Agua cruda -->\n    <rect x=\"18\" y=\"278\" width=\"112\" height=\"74\" rx=\"8\" fill=\"#22303f\" stroke=\"var(--steel)\"/>\n    <rect id=\"rawfill\" x=\"22\" y=\"300\" width=\"104\" height=\"48\" rx=\"5\" fill=\"#7a6a4a\"/>\n    <text x=\"74\" y=\"294\" text-anchor=\"middle\">AGUA CRUDA</text>\n    <text x=\"74\" y=\"330\" text-anchor=\"middle\" id=\"t-rawturb\">— NTU</text>\n    <!-- Tubería entrada -->\n    <path class=\"pipe\" d=\"M130 315 H187\"/><path class=\"flow\" id=\"f-in1\" d=\"M130 315 H187\"/>\n    <path class=\"pipe\" d=\"M243 315 H300 V55 H440 V82\"/><path class=\"flow\" id=\"f-in2\" d=\"M243 315 H300 V55 H440 V82\"/>\n    <!-- P-101 -->\n    <g class=\"pump\" id=\"p101\">\n      <circle class=\"pump-body\" cx=\"215\" cy=\"315\" r=\"28\"/>\n      <g class=\"imp\"><line x1=\"215\" y1=\"295\" x2=\"215\" y2=\"335\"/><line x1=\"197.7\" y1=\"305\" x2=\"232.3\" y2=\"325\"/><line x1=\"197.7\" y1=\"325\" x2=\"232.3\" y2=\"305\"/></g>\n      <text x=\"215\" y=\"364\" text-anchor=\"middle\" class=\"tag\">P-101</text>\n      <text x=\"215\" y=\"378\" text-anchor=\"middle\" class=\"lbl\" id=\"t-p101\">OFF</text>\n    </g>\n    <!-- FT-101 -->\n    <g class=\"inst\"><circle cx=\"262\" cy=\"250\" r=\"20\"/><text x=\"262\" y=\"247\" text-anchor=\"middle\" class=\"tag\">FT-101</text>\n      <text x=\"262\" y=\"260\" text-anchor=\"middle\" id=\"t-qin\" style=\"font-size:10px\">0</text></g>\n    <line x1=\"282\" y1=\"250\" x2=\"300\" y2=\"250\" stroke=\"var(--steel)\" stroke-dasharray=\"3 3\"/>\n    <!-- Coagulante + P-102 -->\n    <rect x=\"650\" y=\"14\" width=\"80\" height=\"58\" rx=\"6\" fill=\"#22303f\" stroke=\"var(--steel)\"/>\n    <rect x=\"654\" y=\"34\" width=\"72\" height=\"34\" rx=\"4\" fill=\"#8a7a3a\" opacity=\".7\"/>\n    <text x=\"690\" y=\"30\" text-anchor=\"middle\" class=\"lbl\">COAGULANTE</text>\n    <path class=\"pipe\" style=\"stroke-width:6\" d=\"M690 72 V96\"/>\n    <g class=\"pump\" id=\"p102\"><circle class=\"pump-body\" cx=\"690\" cy=\"112\" r=\"16\"/>\n      <g class=\"imp\"><line x1=\"690\" y1=\"101\" x2=\"690\" y2=\"123\"/><line x1=\"679\" y1=\"112\" x2=\"701\" y2=\"112\"/></g>\n      <text x=\"718\" y=\"108\" class=\"tag\">P-102</text><text x=\"718\" y=\"122\" class=\"lbl\" id=\"t-p102\">0 L/h</text></g>\n    <path class=\"pipe\" style=\"stroke-width:6\" d=\"M690 128 V140 H585 V82\"/>\n    <path class=\"flow dose\" id=\"f-dose\" d=\"M690 128 V140 H585 V82\"/>\n    <g id=\"drops\"><circle class=\"drop\" cx=\"585\" cy=\"92\" r=\"3.5\"/><circle class=\"drop\" cx=\"585\" cy=\"92\" r=\"3.5\"/><circle class=\"drop\" cx=\"585\" cy=\"92\" r=\"3.5\"/></g>\n    <!-- Tanque -->\n    <g id=\"tank\">\n      <rect x=\"380\" y=\"80\" width=\"240\" height=\"300\" rx=\"8\" fill=\"#0d1724\"/>\n      <g clip-path=\"url(#tankclip)\">\n        <g id=\"water\"><rect id=\"wfill\" x=\"382\" y=\"380\" width=\"236\" height=\"0\" fill=\"#3d8fd6\"/>\n          <rect id=\"wshade\" x=\"382\" y=\"380\" width=\"236\" height=\"0\" fill=\"url(#wgrad)\"/>\n          <path id=\"wsurf\" class=\"wave\" d=\"\" fill=\"none\" stroke=\"#ffffff55\" stroke-width=\"2\"/></g>\n      </g>\n      <rect id=\"tankwall\" x=\"380\" y=\"80\" width=\"240\" height=\"300\" rx=\"8\"/>\n      <line id=\"hlmark\" x1=\"380\" x2=\"620\" y1=\"100\" y2=\"100\" stroke=\"var(--warn)\" stroke-dasharray=\"6 5\"/>\n      <text id=\"hltxt\" x=\"388\" y=\"96\" class=\"lbl\" style=\"fill:var(--warn)\">LSH</text>\n      <text x=\"374\" y=\"92\" text-anchor=\"end\" class=\"lbl\">3000 L</text>\n      <text x=\"500\" y=\"230\" text-anchor=\"middle\" style=\"font-size:26px;font-weight:600\" id=\"t-lvl\">— L</text>\n      <text x=\"500\" y=\"252\" text-anchor=\"middle\" style=\"font-size:13px;fill:#e4edf6cc\" id=\"t-lvlp\">— %</text>\n      <text x=\"500\" y=\"402\" text-anchor=\"middle\" class=\"tag\">TK-101 · 3000 L</text>\n    </g>\n    <!-- Rebose -->\n    <path class=\"pipe\" style=\"stroke-width:6\" d=\"M380 96 H350 V170\"/>\n    <path class=\"flow ovf\" id=\"f-ovf\" d=\"M380 96 H350 V170\"/>\n    <text x=\"345\" y=\"186\" text-anchor=\"middle\" class=\"lbl\">rebose</text>\n    <!-- Agitador M-101 -->\n    <g class=\"mix\" id=\"m101\">\n      <rect x=\"484\" y=\"40\" width=\"32\" height=\"26\" rx=\"4\" fill=\"#22374d\" stroke=\"var(--steel)\" stroke-width=\"2\"/>\n      <text x=\"522\" y=\"58\" class=\"tag\">M-101</text>\n      <line x1=\"500\" y1=\"66\" x2=\"500\" y2=\"330\" stroke=\"#9fb2c6\" stroke-width=\"3\"/>\n      <g class=\"blades\"><path d=\"M462 330 Q481 318 500 330 Q519 342 538 330\" fill=\"none\" stroke=\"#c9d6e3\" stroke-width=\"5\" stroke-linecap=\"round\"/></g>\n    </g>\n    <!-- Instrumentos de calidad -->\n    <g class=\"inst\" id=\"i-lt\"><circle cx=\"660\" cy=\"190\" r=\"22\"/><text x=\"660\" y=\"186\" text-anchor=\"middle\" class=\"tag\">LT-101</text>\n      <text x=\"660\" y=\"200\" text-anchor=\"middle\" id=\"t-lt\" style=\"font-size:10px\">—</text></g>\n    <g class=\"inst\" id=\"i-ph\"><circle cx=\"660\" cy=\"245\" r=\"22\"/><text x=\"660\" y=\"241\" text-anchor=\"middle\" class=\"tag\">AT-101</text>\n      <text x=\"660\" y=\"255\" text-anchor=\"middle\" id=\"t-ph\" style=\"font-size:10px\">pH —</text></g>\n    <g class=\"inst\" id=\"i-tu\"><circle cx=\"660\" cy=\"300\" r=\"22\"/><text x=\"660\" y=\"296\" text-anchor=\"middle\" class=\"tag\">AT-102</text>\n      <text x=\"660\" y=\"310\" text-anchor=\"middle\" id=\"t-tu\" style=\"font-size:10px\">— NTU</text></g>\n    <line x1=\"620\" y1=\"190\" x2=\"638\" y2=\"190\" stroke=\"var(--steel)\" stroke-dasharray=\"3 3\"/>\n    <line x1=\"620\" y1=\"245\" x2=\"638\" y2=\"245\" stroke=\"var(--steel)\" stroke-dasharray=\"3 3\"/>\n    <line x1=\"620\" y1=\"300\" x2=\"638\" y2=\"300\" stroke=\"var(--steel)\" stroke-dasharray=\"3 3\"/>\n    <!-- Salida -->\n    <path class=\"pipe\" d=\"M620 362 H700\"/><path class=\"flow\" id=\"f-out1\" d=\"M620 362 H700\"/>\n    <g class=\"pump\" id=\"p103\">\n      <circle class=\"pump-body\" cx=\"728\" cy=\"362\" r=\"28\"/>\n      <g class=\"imp\"><line x1=\"728\" y1=\"342\" x2=\"728\" y2=\"382\"/><line x1=\"710.7\" y1=\"352\" x2=\"745.3\" y2=\"372\"/><line x1=\"710.7\" y1=\"372\" x2=\"745.3\" y2=\"352\"/></g>\n      <text x=\"728\" y=\"411\" text-anchor=\"middle\" class=\"tag\">P-103</text>\n      <text x=\"728\" y=\"425\" text-anchor=\"middle\" class=\"lbl\" id=\"t-p103\">OFF</text>\n    </g>\n    <path class=\"pipe\" d=\"M756 362 H812\"/><path class=\"flow\" id=\"f-out2\" d=\"M756 362 H812\"/>\n    <rect x=\"812\" y=\"326\" width=\"132\" height=\"74\" rx=\"8\" fill=\"#22303f\" stroke=\"var(--steel)\"/>\n    <rect x=\"816\" y=\"348\" width=\"124\" height=\"48\" rx=\"5\" fill=\"#2f7bc0\" opacity=\".85\"/>\n    <text x=\"878\" y=\"342\" text-anchor=\"middle\">AGUA TRATADA</text>\n    <text x=\"878\" y=\"378\" text-anchor=\"middle\" id=\"t-qout\">0 L/min</text>\n   </svg>\n  </div>\n\n  <div class=\"card\">\n   <h2>Mando remoto (HTTP)</h2>\n   <div class=\"ctl\">\n    <div class=\"row\"><span>Modo</span><div class=\"seg\" id=\"modeSeg\"><button data-m=\"auto\">Auto</button><button data-m=\"manual\">Manual</button></div></div>\n    <div class=\"row\"><span>Bomba P-101</span>\n      <button class=\"btn g\" onclick=\"cmd('bomba_on')\">Arrancar</button>\n      <button class=\"btn\" onclick=\"cmd('bomba_off')\">Detener</button></div>\n    <div class=\"row\"><span>Descarga P-103</span>\n      <button class=\"btn p\" onclick=\"cmd('descarga_on')\">Iniciar</button>\n      <button class=\"btn\" onclick=\"cmd('descarga_off')\">Detener</button></div>\n    <div class=\"row\"><span>Dosificación</span>\n      <input type=\"range\" id=\"doseR\" min=\"0\" max=\"10\" step=\"0.1\" value=\"2\">\n      <input type=\"number\" id=\"doseN\" min=\"0\" max=\"12\" step=\"0.1\" value=\"2\"> <span class=\"muted\" style=\"min-width:0\">L/h</span></div>\n    <div class=\"row\"><span></span><button class=\"btn p\" onclick=\"delete $('doseN').dataset.touched;cmd('dosificacion',{value:+$('doseN').value})\">Aplicar dosificación</button>\n      <span class=\"muted\" style=\"min-width:0\" id=\"doseEff\"></span></div>\n    <div class=\"row\"><span>Agua cruda</span>\n      <input type=\"number\" id=\"turbIn\" min=\"1\" max=\"500\" value=\"40\"> <span class=\"muted\" style=\"min-width:0\">NTU</span>\n      <button class=\"btn y\" onclick=\"cmd('perturbacion',{turbidez_entrada:+$('turbIn').value})\">Aplicar</button></div>\n    <div class=\"row\"><span>Simular falla</span>\n      <button class=\"btn r\" onclick=\"cmd('falla_bomba')\">Falla P-101</button>\n      <button class=\"btn\" onclick=\"cmd('reparar_bomba')\">Reparar</button></div>\n    <div class=\"row\"><span>Simulación</span>\n      <button class=\"btn\" onclick=\"if(confirm('¿Reiniciar la simulación a condiciones iniciales?'))cmd('reiniciar')\">Reiniciar</button>\n      <button class=\"btn\" onclick=\"cmd('ack_todas')\">Reconocer todas</button></div>\n    <div><div class=\"muted\" style=\"margin-bottom:4px\">Última respuesta</div><div id=\"lastcmd\">—</div></div>\n   </div>\n  </div>\n </div>\n\n <div class=\"card\" style=\"margin-top:14px\">\n  <div class=\"tiles\">\n   <div class=\"tile\" id=\"tl-lvl\"><div class=\"k\">Nivel</div><div class=\"v\"><span id=\"v-lvl\">—</span> <small>L</small></div><div class=\"s\" id=\"s-lvl\"></div></div>\n   <div class=\"tile\" id=\"tl-q\"><div class=\"k\">Caudal entrada / salida</div><div class=\"v\"><span id=\"v-q\">—</span> <small>L/min</small></div><div class=\"s\" id=\"s-q\"></div></div>\n   <div class=\"tile\" id=\"tl-ph\"><div class=\"k\">pH</div><div class=\"v\"><span id=\"v-ph\">—</span></div><div class=\"s\">admisible 6,5 – 8,5</div></div>\n   <div class=\"tile\" id=\"tl-tu\"><div class=\"k\">Turbidez</div><div class=\"v\"><span id=\"v-tu\">—</span> <small>NTU</small></div><div class=\"s\">objetivo &lt; 5 NTU</div></div>\n   <div class=\"tile\" id=\"tl-spec\"><div class=\"k\">Calidad</div><div class=\"v\" id=\"v-spec\" style=\"font-size:18px\">—</div><div class=\"s\" id=\"s-spec\"></div></div>\n  </div>\n  <div class=\"kpis\" id=\"kpis\"></div>\n </div>\n</section>\n\n<!-- ================= VISTA INGENIERÍA ================= -->\n<section class=\"view\" id=\"v-eng\">\n <div class=\"toolbar\">\n  <label>Ventana histórica <select id=\"win\">\n    <option value=\"1\">1 min</option><option value=\"5\" selected>5 min</option><option value=\"10\">10 min</option>\n    <option value=\"30\">30 min</option><option value=\"60\">60 min</option></select></label>\n  <span class=\"muted\">GET /api/B09/history?window=…&amp;vars=nivel,caudal_entrada,caudal_salida,ph,turbidez,dosificacion · refresco cada 5 s</span>\n </div>\n <div class=\"grid g-eng\">\n  <div class=\"card\"><h2>Nivel (L)</h2><canvas class=\"chart\" id=\"ch-lvl\"></canvas></div>\n  <div class=\"card\"><h2>Caudal entrada / salida (L/min)</h2><canvas class=\"chart\" id=\"ch-q\"></canvas></div>\n  <div class=\"card\"><h2>pH</h2><canvas class=\"chart\" id=\"ch-ph\"></canvas></div>\n  <div class=\"card\"><h2>Turbidez (NTU)</h2><canvas class=\"chart\" id=\"ch-tu\"></canvas></div>\n\n  <div class=\"card\"><h2>KPI — fórmulas y valores</h2>\n   <table><thead><tr><th>KPI</th><th>Fórmula</th><th class=\"num\">Valor</th></tr></thead><tbody id=\"kpitbl\"></tbody></table></div>\n\n  <div class=\"card\"><h2>Consignas — PUT /api/B09/setpoint</h2>\n   <div class=\"form\">\n    <label>Dosificación</label><input type=\"number\" id=\"sp-dose\" step=\"0.1\"><span class=\"u\">L/h (0–10)</span>\n    <label>Nivel alto (LSH)</label><input type=\"number\" id=\"sp-lsh\" step=\"50\"><span class=\"u\">L (500–3000)</span>\n    <label>Modo</label><select id=\"sp-mode\"><option>auto</option><option>manual</option></select><span></span>\n    <label>Factor de tiempo</label><input type=\"number\" id=\"sp-ft\" step=\"1\"><span class=\"u\">x (1–60)</span>\n    <label>Latencia simulada</label><input type=\"number\" id=\"sp-lat\" step=\"100\"><span class=\"u\">ms (0–10000)</span>\n   </div>\n   <div style=\"margin-top:10px;display:flex;gap:8px;flex-wrap:wrap\">\n    <button class=\"btn p\" onclick=\"putSetpoint()\">Enviar consignas</button>\n    <button class=\"btn\" onclick=\"loadSp(true)\">Recargar actuales</button>\n   </div>\n   <p class=\"muted\">Se envían solo los campos modificados. Valores fuera de rango responden <span class=\"code c4\">400</span>.</p>\n  </div>\n\n  <div class=\"card span2\"><h2>Registro de solicitudes de control (cliente)</h2>\n   <div class=\"scroll\"><table><thead><tr><th>Hora</th><th>Método</th><th>Ruta</th><th>Cuerpo</th><th>Código</th><th class=\"num\">t ida-vuelta (ms)</th><th class=\"num\">t servidor (ms)</th><th>Respuesta</th></tr></thead>\n   <tbody id=\"logtbl\"></tbody></table></div>\n   <div style=\"margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap\">\n    <button class=\"btn\" onclick=\"loadServerLog()\">Ver registro del servidor (GET /commands/log)</button>\n    <button class=\"btn\" onclick=\"exportLog()\">Exportar CSV</button>\n    <span class=\"muted\" id=\"logstat\"></span></div>\n  </div>\n\n  <div class=\"card\"><h2>Registro de alarmas y eventos</h2>\n   <div class=\"scroll\"><table><thead><tr><th>Hora</th><th>Tipo</th><th>Id</th><th>Detalle</th><th>Sev.</th></tr></thead><tbody id=\"almlog\"></tbody></table></div></div>\n\n  <div class=\"card\"><h2>Última telemetría (JSON)</h2><pre class=\"json\" id=\"rawjson\">—</pre></div>\n </div>\n</section>\n</main>\n\n<script>\n/* ======================================================================\n   B09 · Dashboard. Toda la información llega por HTTP/REST mediante fetch().\n   Base de la API: misma máquina que sirve la página (Node-RED) o ?api=http://host:1880\n   ====================================================================== */\nconst $ = id => document.getElementById(id);\nconst qp = new URLSearchParams(location.search);\nconst ORIGIN = qp.get('api') || (location.protocol === 'file:' ? 'http://localhost:1880' : new URL('.', location.href).href);\nconst API = ORIGIN.replace(/\\/$/, '') + '/api/B09';\nlet POLL_MS = 1000, cycle = 0, inflight = false, status = null, telem = null;\nconst clientLog = [];\n\n/* ---------- cliente HTTP con timeout ---------- */\nasync function api(method, path, body, log = false) {\n  const TMO = Math.max(200, +$('tmo').value || 3000);\n  const ctrl = new AbortController(), t0 = performance.now();\n  const timer = setTimeout(() => ctrl.abort(), TMO);\n  try {\n    const r = await fetch(API + path, { method, cache: 'no-store', signal: ctrl.signal,\n      headers: body ? { 'Content-Type': 'application/json' } : {}, body: body ? JSON.stringify(body) : undefined });\n    const dt = performance.now() - t0;\n    let data = null; try { data = await r.json(); } catch (e) {}\n    setConn(true);\n    if (log) addLog(method, path, body, r.status, dt, data);\n    return { ok: r.ok, status: r.status, data, dt };\n  } catch (e) {\n    const dt = performance.now() - t0, to = e.name === 'AbortError';\n    setConn(false, to ? `timeout (> ${TMO} ms)` : 'sin conexión');\n    if (log) addLog(method, path, body, to ? 'TIMEOUT' : 'ERROR', dt, { error: to ? `Sin respuesta en ${TMO} ms` : e.message });\n    return { ok: false, status: to ? 'TIMEOUT' : 'ERROR', data: null, dt };\n  } finally { clearTimeout(timer); }\n}\nfunction setConn(ok, txt) {\n  $('conn').className = 'dot ' + (ok ? 'ok' : 'bad');\n  $('conntxt').textContent = ok ? `en línea · ${POLL_MS} ms` : txt;\n}\nconst codeCls = c => typeof c !== 'number' ? 'cT' : c < 300 ? 'c2' : c < 500 ? 'c4' : 'c5';\nfunction addLog(method, path, body, code, dt, data) {\n  const e = { ts: new Date().toISOString(), method, path, body, code, dt: Math.round(dt),\n    srv: data && data.tiempo_servidor_ms, msg: data ? (data.resultado || data.error || '') : '' };\n  clientLog.unshift(e); if (clientLog.length > 200) clientLog.pop();\n  $('lastcmd').innerHTML = `<span class=\"code ${codeCls(code)}\">${code}</span> ${method} ${path} · ${e.dt} ms\\n` +\n     esc(body ? JSON.stringify(body) : '') + '\\n→ ' + esc(e.msg || '');\n  renderLog();\n}\nfunction renderLog() {\n  $('logtbl').innerHTML = clientLog.map(e => `<tr><td>${hhmmss(e.ts)}</td><td>${e.method}</td><td>${e.path}</td>\n    <td>${esc(e.body ? JSON.stringify(e.body) : '')}</td><td><span class=\"code ${codeCls(e.code)}\">${e.code}</span></td>\n    <td class=\"num\">${e.dt}</td><td class=\"num\">${e.srv ?? '—'}</td><td>${esc(e.msg)}</td></tr>`).join('');\n}\nfunction exportLog() {\n  const rows = [['ts','metodo','ruta','cuerpo','codigo','t_ida_vuelta_ms','t_servidor_ms','respuesta']]\n    .concat(clientLog.map(e => [e.ts, e.method, e.path, e.body ? JSON.stringify(e.body) : '', e.code, e.dt, e.srv ?? '', e.msg]));\n  const csv = rows.map(r => r.map(x => '\"' + String(x).replace(/\"/g, '\"\"') + '\"').join(',')).join('\\n');\n  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));\n  a.download = 'B09_registro_solicitudes.csv'; a.click();\n}\nasync function loadServerLog() {\n  const r = await api('GET', '/commands/log');\n  if (!r.ok) return;\n  $('logstat').textContent = `Servidor: ${r.data.registro.length} solicitudes registradas`;\n  const w = window.open('', '_blank');\n  w.document.write('<pre>' + esc(JSON.stringify(r.data, null, 2)) + '</pre>');\n}\nconst esc = s => String(s ?? '').replace(/[&<>\"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c]));\nconst hhmmss = iso => new Date(iso).toLocaleTimeString('es-EC', { hour12: false });\n\n/* ---------- comandos ---------- */\nasync function cmd(command, extra = {}) {\n  await api('POST', '/commands', Object.assign({ command }, extra), true);\n  refresh(true);\n}\nasync function putSetpoint() {\n  const cur = (status && status.setpoints) || {};\n  const f = { dosificacion_Lh: $('sp-dose').value, nivel_alto_L: $('sp-lsh').value, modo: $('sp-mode').value,\n              factor_tiempo: $('sp-ft').value, latencia_ms: $('sp-lat').value };\n  const body = {};\n  for (const [k, v] of Object.entries(f)) {\n    if (v === '') continue;\n    const val = k === 'modo' ? v : Number(v);\n    if (val !== cur[k]) body[k] = val;\n  }\n  if (!Object.keys(body).length) { $('lastcmd').textContent = 'Sin cambios en las consignas.'; return; }\n  await api('PUT', '/setpoint', body, true);\n  await refresh(true); loadSp(true);\n}\nfunction loadSp(force) {\n  if (!status) return;\n  const s = status.setpoints;\n  const set = (id, v) => { const el = $(id); if (force) delete el.dataset.dirty;\n    if (force || document.activeElement !== el && !el.dataset.dirty) el.value = v; };\n  set('sp-dose', s.dosificacion_Lh); set('sp-lsh', s.nivel_alto_L); set('sp-mode', s.modo);\n  set('sp-ft', s.factor_tiempo); set('sp-lat', s.latencia_ms);\n}\ndocument.querySelectorAll('#modeSeg button').forEach(b => b.onclick = async () => {\n  await api('PUT', '/setpoint', { modo: b.dataset.m }, true); refresh(true);\n});\n$('doseR').oninput = () => $('doseN').value = $('doseR').value;\n$('doseN').oninput = () => $('doseR').value = $('doseN').value;\n\n/* ---------- polling ---------- */\nasync function refresh(force) {\n  if (inflight && !force) return;\n  inflight = true;\n  try {\n    const [t, s, a] = await Promise.all([api('GET', '/telemetry'), api('GET', '/status'), api('GET', '/alarms')]);\n    if (t.ok) { telem = t.data; renderTelemetry(); $('rawjson').textContent = JSON.stringify(t.data, null, 2); }\n    if (s.ok) { status = s.data; renderStatus(); }\n    if (a.ok) renderAlarms(a.data);\n    if (force || cycle % 2 === 0) { const k = await api('GET', '/kpis'); if (k.ok) renderKpis(k.data); }\n  } finally { inflight = false; }\n}\nfunction loop() { cycle++; refresh(false); setTimeout(loop, POLL_MS); }\n$('poll').onchange = () => { POLL_MS = +$('poll').value; };\n\n/* ---------- render: proceso ---------- */\nconst TANK_TOP = 82, TANK_H = 296, CAP = 3000;\nfunction turbColor(t) { // azul limpio → marrón turbio\n  const k = Math.min(1, Math.log10(1 + t) / Math.log10(101));\n  const c0 = [61, 143, 214], c1 = [138, 104, 58];\n  return `rgb(${c0.map((v, i) => Math.round(v + (c1[i] - v) * k)).join(',')})`;\n}\nfunction renderTelemetry() {\n  const d = telem.data;\n  const V = d.nivel.value, ph = d.ph.value, tu = d.turbidez.value;\n  $('tsim').textContent = fmtTime(telem.t_sim_s);\n  // tanque\n  const h = TANK_H * Math.min(1, V / CAP), y = TANK_TOP + TANK_H - h;\n  for (const id of ['wfill', 'wshade']) { $(id).setAttribute('y', y); $(id).setAttribute('height', h); }\n  $('wfill').setAttribute('fill', turbColor(tu));\n  $('wsurf').setAttribute('d', h > 2 ? `M382 ${y} q 14 -4 28 0 t 28 0 t 28 0 t 28 0 t 28 0 t 28 0 t 28 0 t 28 0 t 28 0` : '');\n  $('t-lvl').textContent = Math.round(V) + ' L';\n  $('t-lvlp').textContent = d.nivel_pct.value.toFixed(1) + ' %';\n  $('t-lt').textContent = d.nivel_pct.value.toFixed(0) + ' %';\n  $('t-ph').textContent = 'pH ' + ph.toFixed(2);\n  $('t-tu').textContent = tu.toFixed(1) + ' NTU';\n  $('t-qin').textContent = d.caudal_entrada.value.toFixed(0);\n  $('t-qout').textContent = d.caudal_salida.value.toFixed(0) + ' L/min';\n  $('t-p102').textContent = d.dosificacion.value.toFixed(1) + ' L/h';\n  $('doseEff').textContent = `efectiva ${d.dosis_efectiva.value.toFixed(2)} L/h (retardo)`;\n  // flujos animados\n  const qin = d.caudal_entrada.value > 0.5, qout = d.caudal_salida.value > 0.5;\n  ['f-in1', 'f-in2'].forEach(id => $(id).classList.toggle('on', qin));\n  ['f-out1', 'f-out2'].forEach(id => $(id).classList.toggle('on', qout));\n  const dosing = d.dosificacion.value > 0 && V > 50;\n  $('f-dose').classList.toggle('on', dosing);\n  $('drops').classList.toggle('dosing', dosing);\n  $('p102').classList.toggle('run', dosing);\n  $('m101').classList.toggle('run', V > 50);\n  // instrumentos en alarma\n  $('i-ph').classList.toggle('alarm', ph < 6.5 || ph > 8.5);\n  $('i-tu').classList.toggle('alarm', tu > 5);\n  $('i-lt').classList.toggle('alarm', V >= 2970);\n  // tiles\n  $('v-lvl').textContent = Math.round(V); $('s-lvl').textContent = d.nivel_pct.value.toFixed(1) + ' % de 3000 L';\n  $('v-q').textContent = `${d.caudal_entrada.value.toFixed(0)} / ${d.caudal_salida.value.toFixed(0)}`;\n  $('s-q').textContent = `neto ${d.caudal_neto.value.toFixed(1)} L/min`;\n  $('v-ph').textContent = ph.toFixed(2); $('v-tu').textContent = tu.toFixed(2);\n  tileState('tl-lvl', V >= 2970 ? 'bad' : V >= 2800 ? 'warn' : '');\n  tileState('tl-ph', ph < 6.5 || ph > 8.5 ? 'bad' : (ph < 6.7 || ph > 8.3) ? 'warn' : '');\n  tileState('tl-tu', tu > 5 ? 'bad' : tu > 4 ? 'warn' : '');\n}\nfunction tileState(id, s) { $(id).className = 'tile ' + s; }\nfunction fmtTime(s) { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;\n  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(x).padStart(2, '0')}`; }\nfunction renderStatus() {\n  const s = status;\n  $('hmode').textContent = s.modo.toUpperCase();\n  document.querySelectorAll('#modeSeg button').forEach(b => b.classList.toggle('on', b.dataset.m === s.modo));\n  const p1 = s.bomba_alimentacion;\n  $('p101').classList.toggle('run', p1.estado === 'ON'); $('p101').classList.toggle('fault', p1.falla);\n  $('t-p101').textContent = p1.estado + (p1.estado !== 'ON' && p1.motivo ? ' · ' + p1.motivo : '');\n  $('p103').classList.toggle('run', s.bomba_descarga.estado === 'ON');\n  $('t-p103').textContent = s.bomba_descarga.estado;\n  $('t-rawturb').textContent = s.perturbacion.turbidez_entrada_NTU.toFixed(0) + ' NTU';\n  $('rawfill').setAttribute('fill', turbColor(s.perturbacion.turbidez_entrada_NTU));\n  $('tank').classList.toggle('ovf', s.rebosando);\n  $('f-ovf').classList.toggle('on', s.rebosando);\n  const yl = TANK_TOP + TANK_H * (1 - s.setpoints.nivel_alto_L / CAP);\n  $('hlmark').setAttribute('y1', yl); $('hlmark').setAttribute('y2', yl);\n  $('hltxt').setAttribute('y', yl - 4); $('hltxt').textContent = `LSH ${s.setpoints.nivel_alto_L}`;\n  $('v-spec').textContent = s.en_especificacion ? '✔ En especificación' : '✖ Fuera de especificación';\n  $('s-spec').textContent = `Dosificadora ${s.dosificadora.estado} · agitador ${s.agitador.estado}`;\n  tileState('tl-spec', s.en_especificacion ? '' : 'bad');\n  if (document.activeElement !== $('doseN') && document.activeElement !== $('doseR') && !$('doseN').dataset.touched) {\n    $('doseN').value = s.setpoints.dosificacion_Lh; $('doseR').value = s.setpoints.dosificacion_Lh; }\n  loadSp(false);\n}\n$('doseN').addEventListener('focus', () => $('doseN').dataset.touched = 1);\n$('doseR').addEventListener('input', () => $('doseN').dataset.touched = 1);\ndocument.querySelectorAll('.form input,.form select').forEach(el => el.addEventListener('input', () => el.dataset.dirty = 1));\n\n/* ---------- render: KPI ---------- */\nconst KNAME = { volumen_tratado: 'Volumen tratado', tiempo_en_especificacion: 'Tiempo en especificación',\n  consumo_reactivo: 'Consumo de reactivo', tiempo_proceso: 'Tiempo de proceso', disponibilidad: 'Disponibilidad' };\nfunction renderKpis(d) {\n  const ks = Object.entries(d.kpis);\n  $('kpis').innerHTML = ks.map(([k, o]) => `<div class=\"kpi\"><div class=\"k\">${KNAME[k]}</div>\n     <div class=\"v\">${o.value.toLocaleString('es-EC')} <small class=\"muted\">${o.unit}</small></div></div>`).join('');\n  $('kpitbl').innerHTML = ks.map(([k, o]) => `<tr><td>${KNAME[k]}</td><td class=\"muted\">${esc(o.formula)}</td>\n     <td class=\"num\"><b>${o.value.toLocaleString('es-EC')}</b> ${o.unit}</td></tr>`).join('') +\n     Object.entries(d.adicionales).map(([k, o]) => `<tr><td class=\"muted\">${k.replace('_', ' ')}</td><td class=\"muted\">(complementario)</td>\n     <td class=\"num\">${o.value.toLocaleString('es-EC')} ${o.unit}</td></tr>`).join('');\n}\n\n/* ---------- render: alarmas ---------- */\nfunction renderAlarms(d) {\n  $('alarmbar').innerHTML = d.alarmas.map(a => `<div class=\"alm ${a.severidad} ${a.reconocida ? '' : 'unack'} ${a.activa ? '' : 'cleared'}\">\n     <span class=\"sev\">${a.severidad}</span><b>${a.id}</b> ${esc(a.nombre)} · <span class=\"muted\">${esc(a.condicion)}</span>\n     · valor ${typeof a.valor === 'number' ? a.valor.toFixed(2) : a.valor} ${a.unidad}\n     · desde ${hhmmss(a.t_activacion)} ${a.activa ? '' : '· <i>normalizada ' + hhmmss(a.t_normalizacion) + '</i>'}\n     ${a.reconocida ? '<span class=\"muted\">reconocida ' + hhmmss(a.t_reconocimiento) + '</span>'\n        : `<button class=\"btn\" onclick=\"cmd('ack_alarma',{alarm_id:'${a.id}'})\">Reconocer</button>`}</div>`).join('');\n  $('almlog').innerHTML = d.registro.map(e => `<tr><td>${hhmmss(e.ts)}</td><td class=\"ev-${e.tipo}\">${e.tipo}</td>\n     <td>${e.id}</td><td>${esc(e.texto)}</td><td>${e.severidad || ''}</td></tr>`).join('');\n}\n\n/* ---------- históricos (canvas propio, sin librerías) ---------- */\nasync function loadHistory() {\n  const w = $('win').value;\n  const r = await api('GET', `/history?window=${w}&vars=nivel,caudal_entrada,caudal_salida,ph,turbidez&max_points=400`);\n  if (!r.ok) return;\n  const S = r.data.samples;\n  drawChart('ch-lvl', S, [{ k: 'nivel', c: '#38b2ff' }], { min: 0, max: 3000, lines: [{ v: 3000, c: '#ff6b5c', t: 'capacidad' },\n     { v: status ? status.setpoints.nivel_alto_L : 2800, c: '#f5b041', t: 'LSH' }] });\n  drawChart('ch-q', S, [{ k: 'caudal_entrada', c: '#38b2ff', n: 'entrada' }, { k: 'caudal_salida', c: '#2ecc71', n: 'salida' }], { min: 0, max: 100 });\n  drawChart('ch-ph', S, [{ k: 'ph', c: '#c39bff' }], { min: 5, max: 9.5, lines: [{ v: 6.5, c: '#ff6b5c', t: '6,5' }, { v: 8.5, c: '#ff6b5c', t: '8,5' }] });\n  drawChart('ch-tu', S, [{ k: 'turbidez', c: '#e0a95a' }], { min: 0, auto: true, lines: [{ v: 5, c: '#ff6b5c', t: '5 NTU' }] });\n}\nfunction drawChart(id, S, series, o) {\n  const cv = $(id), dpr = window.devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;\n  cv.width = W * dpr; cv.height = H * dpr;\n  const g = cv.getContext('2d'); g.scale(dpr, dpr); g.clearRect(0, 0, W, H);\n  const L = 44, R = 10, T = 10, B = 22, pw = W - L - R, ph = H - T - B;\n  g.font = '11px Segoe UI, sans-serif';\n  if (!S.length) { g.fillStyle = '#8aa0b8'; g.fillText('Sin datos en la ventana', L + 10, T + 20); return; }\n  let min = o.min, max = o.max;\n  if (o.auto) { max = Math.max(10, ...S.map(s => Math.max(...series.map(x => s[x.k] ?? 0)))) * 1.1; }\n  const t0 = Date.parse(S[0].ts), t1 = Math.max(t0 + 1000, Date.parse(S[S.length - 1].ts));\n  const X = t => L + (Date.parse(t) - t0) / (t1 - t0) * pw, Y = v => T + ph - (Math.min(max, Math.max(min, v)) - min) / (max - min) * ph;\n  g.strokeStyle = '#263a52'; g.fillStyle = '#8aa0b8'; g.lineWidth = 1;\n  for (let i = 0; i <= 4; i++) { const v = min + (max - min) * i / 4, y = Y(v);\n    g.beginPath(); g.moveTo(L, y); g.lineTo(W - R, y); g.stroke();\n    g.fillText(v >= 100 ? v.toFixed(0) : v.toFixed(1), 4, y + 4); }\n  for (let i = 0; i <= 4; i++) { const t = t0 + (t1 - t0) * i / 4, x = L + pw * i / 4;\n    g.fillText(new Date(t).toLocaleTimeString('es-EC', { hour12: false }), Math.min(x - 22, W - 52), H - 6); }\n  (o.lines || []).forEach(l => { const y = Y(l.v); g.strokeStyle = l.c; g.setLineDash([5, 4]);\n    g.beginPath(); g.moveTo(L, y); g.lineTo(W - R, y); g.stroke(); g.setLineDash([]); g.fillStyle = l.c; g.fillText(l.t, W - R - 50, y - 3); });\n  series.forEach((s, j) => { g.strokeStyle = s.c; g.lineWidth = 2; g.beginPath();\n    S.forEach((p, i) => { const x = X(p.ts), y = Y(p[s.k]); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();\n    if (s.n) { g.fillStyle = s.c; g.fillText('■ ' + s.n, L + 8 + j * 80, T + 12); } });\n}\n$('win').onchange = loadHistory;\nsetInterval(loadHistory, 5000);\n\n/* ---------- pestañas ---------- */\ndocument.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {\n  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));\n  document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === 'v-' + b.dataset.v));\n  if (b.dataset.v === 'eng') { loadHistory(); loadSp(true); }\n});\nwindow.addEventListener('resize', loadHistory);\n\nif (location.hash === '#eng') document.querySelector('.tabs button[data-v=eng]').click();\nloop(); loadHistory();\n</script>\n</body>\n</html>\n",
+        "output": "str",
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "11835ff52b550662"
+            ]
+        ]
+    },
+    {
+        "id": "c103818c14818dc0",
+        "type": "http in",
+        "z": "3db0a3808e0a91d1",
+        "name": "",
+        "url": "/B09",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "07338761bd706b5f"
+            ]
+        ]
+    },
+    {
+        "id": "11835ff52b550662",
+        "type": "http response",
+        "z": "3db0a3808e0a91d1",
+        "name": "HTML",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "text/html; charset=utf-8"
+        },
+        "x": 610,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f37ab2d7dfe90534",
+        "type": "comment",
+        "z": "285f9af340bec452",
+        "name": "Arranque: leer b09_persist.json → restaurar estado (o crear estado inicial)",
+        "info": "",
+        "x": 300,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "1cbfdfd5ec80a274",
+        "type": "file in",
+        "z": "285f9af340bec452",
+        "name": "Leer b09_persist.json",
+        "filename": "b09_persist.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "224d9a690283e040"
+            ]
+        ]
+    },
+    {
+        "id": "cad9fe979591d94d",
+        "type": "inject",
+        "z": "285f9af340bec452",
+        "name": "Al iniciar",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "1cbfdfd5ec80a274"
+            ]
+        ]
+    },
+    {
+        "id": "224d9a690283e040",
+        "type": "json",
+        "z": "285f9af340bec452",
+        "name": "JSON → objeto",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 570,
+        "y": 100,
+        "wires": [
+            [
+                "65c94b07468dcff0"
+            ]
+        ]
+    },
+    {
+        "id": "fc9bbacd2887f1c6",
+        "type": "catch",
+        "z": "285f9af340bec452",
+        "name": "Archivo inexistente / corrupto",
+        "scope": [
+            "1cbfdfd5ec80a274",
+            "224d9a690283e040"
+        ],
+        "uncaught": false,
+        "x": 380,
+        "y": 160,
+        "wires": [
+            [
+                "2d86596396b7f45c"
+            ]
+        ]
+    },
+    {
+        "id": "2d86596396b7f45c",
+        "type": "change",
+        "z": "285f9af340bec452",
+        "name": "payload = null",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "null",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 160,
+        "wires": [
+            [
+                "65c94b07468dcff0"
+            ]
+        ]
+    },
+    {
+        "id": "65c94b07468dcff0",
+        "type": "function",
+        "z": "285f9af340bec452",
+        "name": "Restaurar / crear estado",
+        "func": "// ===== B09 · Restaurar / crear estado =====\n// Entrada: msg.payload = objeto leído de b09_persist.json (o nada si el archivo no existe).\n// Crea el estado inicial y, si hay archivo válido, recupera el estado persistido.\nfunction defaults() {\n    return {\n        device: 'B09',\n        version: 1,\n        // Constantes físicas del modelo (no se persisten: siempre se toman del código)\n        cfg: {\n            CAP: 3000,          // capacidad del tanque [L]\n            QIN_NOM: 60,        // caudal nominal bomba de alimentación P-101 [L/min]\n            QOUT_NOM: 90,       // caudal nominal bomba de descarga P-103 [L/min]\n            DOSE_MAX: 10,       // dosificación máxima de coagulante [L/h]\n            TAU_DOSE: 120,      // retardo (1er orden) de la dosificación [s]\n            TAU_PH: 180,        // constante de tiempo del pH [s]\n            ALPHA: 0.25,        // descenso de pH por cada L/h de coagulante efectivo [pH/(L/h)]\n            KMAX: 0.012,        // tasa máxima de remoción de turbidez [1/s]\n            KD: 1.5,            // dosis de semi-saturación [L/h]\n            PH_MIN: 6.5, PH_MAX: 8.5,\n            TURB_OBJ: 5,        // turbidez objetivo [NTU]\n            V_MIN_DESC: 100,    // volumen mínimo para iniciar descarga [L]\n            HIST_MAX: 3600      // muestras de histórico (1 por segundo real = 60 min)\n        },\n        // Consignas (modificables por PUT /setpoint)\n        sp: { modo: 'auto', nivel_alto_L: 2800, dosificacion_Lh: 2.0, factor_tiempo: 10, latencia_ms: 0 },\n        // Estado del proceso\n        proc: { t_sim: 0, V: 1200, pH: 7.3, turb: 3.0, Qin: 0, Qout: 0, dose_eff: 2.0,\n                overflow: false, en_spec: true, pH_in: 7.8, turb_in: 40, turb_in_base: 40 },\n        // Actuadores\n        act: { bomba_on: false, bomba_falla: false, descarga_on: false, motivo_bomba: 'inicio' },\n        // Acumuladores de KPI (tiempos en s simulados, volúmenes en L)\n        kpi: { t_total: 0, t_spec: 0, t_disp: 0, reactivo_L: 0, tratado_L: 0, descargado_L: 0, rebose_L: 0 },\n        alarms: {}, alarm_log: [], history: [], cmd_log: []\n    };\n}\n\n// Plantilla para el comando \"reiniciar\" (lo usa el flujo de Comunicaciones)\nglobal.set('b09_defaults', JSON.stringify(defaults()));\n\nlet S = defaults();\nlet origen = 'inicial';\nconst saved = msg.payload;\nif (saved && typeof saved === 'object' && saved.device === 'B09' && saved.version === 1) {\n    for (const k of ['sp', 'proc', 'act', 'kpi']) Object.assign(S[k], saved[k] || {});\n    for (const k of ['alarms', 'alarm_log', 'history', 'cmd_log']) if (saved[k]) S[k] = saved[k];\n    origen = 'archivo';\n}\nS.meta = { iniciado: new Date().toISOString(), origen };\nglobal.set('b09', S);\nnode.status({ fill: 'green', shape: 'dot', text: 'estado ' + origen });\nreturn { payload: S.meta };\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06e14a8aa3d37ccc",
+        "type": "comment",
+        "z": "285f9af340bec452",
+        "name": "Cada 10 s: guardar estado completo (consignas, KPI, alarmas, históricos, registro de comandos)",
+        "info": "",
+        "x": 380,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f1983475d0f64d25",
+        "type": "file",
+        "z": "285f9af340bec452",
+        "name": "Escribir b09_persist.json",
+        "filename": "b09_persist.json",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 620,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31c3f0850a3a2a19",
+        "type": "function",
+        "z": "285f9af340bec452",
+        "name": "Serializar estado",
+        "func": "const S = global.get('b09');\nif (!S) return null;\nmsg.payload = JSON.stringify(S);\nnode.status({text: 'guardado ' + new Date().toLocaleTimeString()});\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 300,
+        "wires": [
+            [
+                "f1983475d0f64d25"
+            ]
+        ]
+    },
+    {
+        "id": "a97675a711626e6a",
+        "type": "inject",
+        "z": "285f9af340bec452",
+        "name": "cada 10 s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "31c3f0850a3a2a19"
+            ]
+        ]
+    }
+]
